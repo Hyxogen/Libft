@@ -8,11 +8,11 @@ int
 {
 	int	index;
 
-	index = 0;
+	index = -256;
 	while (index < 256) {
 		if (ft_isalnum(index) != isalnum(index))
 		{
-			printf("Failed test ft_isalnum. Expected:%d, got:%d for:%d\n", isalnum(index), ft_isalnum(index), index);
+			printf("Failed test ft_isalnum. Expected:%d, got:%d for:%c(%d)\n", isalnum(index), ft_isalnum(index), index, index);
 			return (0);
 		}
 		index++;

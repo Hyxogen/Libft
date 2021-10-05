@@ -1,4 +1,4 @@
-#include <string.h>
+#include <wchar.h>
 
 void
 	*ft_memset(void *dest, int ch, size_t len)
@@ -8,8 +8,7 @@ void
 	if (!dest || !len)
 		return (dest);
 	array = dest;
-
-	while(len)
+	while (len)
 	{
 		*array = (unsigned char) ch;
 		len--;
