@@ -11,6 +11,7 @@ int	test_bzero();
 int	test_memcpy();
 int	test_memmove();
 int	test_strlcat();
+int	test_strlcpy();
 
 //TODO fill in UINT_MAX in places that accept numbers
 int
@@ -60,5 +61,9 @@ int
 		printf("Test for ft_strlcat failed!\n");
 	else
 		printf("Passed tests for ft_strlcat!\n");	
+	if (!test_strlcpy())
+		printf("Test for ft_strlcpy failed!\n");
+	else
+		printf("Passed tests for ft_strlcpy!\n");	
 	return (0);
 }
