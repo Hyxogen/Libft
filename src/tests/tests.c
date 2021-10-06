@@ -12,6 +12,7 @@ int	test_memcpy();
 int	test_memmove();
 int	test_strlcat();
 int	test_strlcpy();
+int	test_toupper();
 
 //TODO fill in UINT_MAX in places that accept numbers
 int
@@ -64,6 +65,10 @@ int
 	if (!test_strlcpy())
 		printf("Test for ft_strlcpy failed!\n");
 	else
-		printf("Passed tests for ft_strlcpy!\n");	
+		printf("Passed tests for ft_strlcpy!\n");
+	if (!test_toupper())
+		printf("Test for ft_toupper failed!\n");
+	else
+		printf("Passed tests for ft_toupper!\n");	
 	return (0);
 }
