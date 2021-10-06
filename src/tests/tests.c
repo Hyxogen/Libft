@@ -13,6 +13,8 @@ int	test_memmove();
 int	test_strlcat();
 int	test_strlcpy();
 int	test_toupper();
+int	test_tolower();
+int	test_strchr();
 
 //TODO fill in UINT_MAX in places that accept numbers
 int
@@ -69,6 +71,14 @@ int
 	if (!test_toupper())
 		printf("Test for ft_toupper failed!\n");
 	else
-		printf("Passed tests for ft_toupper!\n");	
+		printf("Passed tests for ft_toupper!\n");
+	if (!test_tolower())
+		printf("Test for ft_tolower failed!\n");
+	else
+		printf("Passed tests for ft_tolower!\n");
+	if (!test_strchr())
+		printf("Test for ft_strchr failed!\n");
+	else
+		printf("Passed tests for ft_strchr!\n");
 	return (0);
 }
