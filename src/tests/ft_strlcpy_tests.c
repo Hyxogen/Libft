@@ -16,7 +16,7 @@ const static char 	*test_srcs[] = {
 size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize);
 
 static int
-	test_single(const char *const tsrc, size_t tsize)
+	test_single(const char *tsrc, size_t tsize)
 {
 	char	*tdst;
 	char	*cdst;
