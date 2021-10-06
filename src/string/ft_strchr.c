@@ -5,7 +5,7 @@ char
 	{
 		if (*str == (char) c)
 			return ((char*) str);
-		if (!*str)
+		else if (!*str)
 			break;
 		str++;
 	}

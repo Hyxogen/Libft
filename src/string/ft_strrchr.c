@@ -9,7 +9,7 @@ char
 		if (*str == (char) c)
 			ret = (char*) str;
 		if (!*str)
-			break;
+			break ;
 		str++;
 	}
 	return (ret);

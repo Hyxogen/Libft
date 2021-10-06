@@ -16,7 +16,10 @@ int	test_toupper();
 int	test_tolower();
 int	test_strchr();
 int	test_strrchr();
+int	test_strncmp();
+int	test_memchr();
 
+//TODO remove 'restrict' keyword from functions
 //TODO fill in UINT_MAX in places that accept numbers
 int
 	main()
@@ -85,5 +88,13 @@ int
 		printf("Test for ft_strrchr failed!\n");
 	else
 		printf("Passed tests for ft_strrchr!\n");
+	if (!test_strncmp())
+		printf("Test for ft_strncmp failed!\n");
+	else
+		printf("Passed tests for ft_strncmp!\n");
+	if (!test_memchr())
+		printf("Test for ft_memchr failed!\n");
+	else
+		printf("Passed tests for ft_memchr!\n");
 	return (0);
 }
