@@ -1,5 +1,4 @@
 #include <wchar.h>
-#include <stdio.h>
 
 size_t	ft_strlen(const char *str);
 
@@ -28,7 +27,6 @@ size_t
 		dst++;
 		dstsize--;
 	}
-	printf("Now:%s\n", dst - dstsize);
 	*dst = '\0';
 	return (dstlen + srclen);
 }

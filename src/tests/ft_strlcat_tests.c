@@ -104,7 +104,7 @@ static int
 				memset(cbuffer, 0, 1024);
 				memset(tbuffer, 0, 1024);
 				memcpy(cbuffer, strs_o[first], flen);
-				memcpy(tbuffer, strs_o[first], slen);
+				memcpy(tbuffer, strs_o[first], flen);
 
 				rett = ft_strlcat(tbuffer, strs_s[second], flen + slen + 1);
 				retc = strlcat(cbuffer, strs_s[second], flen + slen + 1);
