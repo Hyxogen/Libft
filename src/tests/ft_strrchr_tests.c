@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
+char	*ft_strrchr(const char *str, int c);
 char	*ft_strchr(const char *str, int c);
 
 static int
 	test_single(const char *str, int c)
 {
-	if (ft_strchr(str, c) != strchr(str, c))
+	if (ft_strrchr(str, c) != strrchr(str, c))
 	{
-		printf("Failed test_single for ft_strchr. Expected:%lx got:%lx\n", (unsigned long) strchr(str, c), (unsigned long) ft_strchr(str, c));
+		printf("Failed test_single for ft_strrchr. Expected:%lx got:%lx\n", (unsigned long) strrchr(str, c), (unsigned long) ft_strrchr(str, c));
 		return (0);
 	}
 	return (1);
@@ -24,7 +25,7 @@ static int
 	{
 		if (!test_single(buf, index))
 		{
-			printf("At test_all_chars_a for ft_strchr. Index:%d char:%c\n", index, index);
+			printf("At test_all_chars_a for ft_strrchr. Index:%d char:%c\n", index, index);
 			return (0);
 		}
 		index++;
@@ -45,7 +46,7 @@ static int
 	}
 	if (!test_all_chars_a(buffer))
 	{
-			printf("At test_all_chars for ft_strchr.\n\n");
+			printf("At test_all_chars for ft_strrchr.\n\n");
 			return (0);
 	}
 	return (1);
@@ -73,7 +74,7 @@ static int
 		}
 		if (!test_all_chars_a(buffer))
 		{
-			printf("At test_no_find for ft_strchr. Missing:%d index:%d\n\n", missing, index);
+			printf("At test_no_find for ft_strrchr. Missing:%d index:%d\n\n", missing, index);
 			return (0);
 		}
 		missing++;
@@ -97,14 +98,14 @@ static int
 	}
 	if (!test_all_chars_a(buffer))
 	{
-			printf("At test_duplicates for ft_strchr.\n\n");
+			printf("At test_duplicates for ft_strrchr.\n\n");
 			return (0);
 	}
 	return (1);
 }
 
 int
-	test_strchr()
+	test_strrchr()
 {
 	int	ret;
 

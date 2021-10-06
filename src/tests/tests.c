@@ -15,6 +15,7 @@ int	test_strlcpy();
 int	test_toupper();
 int	test_tolower();
 int	test_strchr();
+int	test_strrchr();
 
 //TODO fill in UINT_MAX in places that accept numbers
 int
@@ -80,5 +81,9 @@ int
 		printf("Test for ft_strchr failed!\n");
 	else
 		printf("Passed tests for ft_strchr!\n");
+	if (!test_strrchr())
+		printf("Test for ft_strrchr failed!\n");
+	else
+		printf("Passed tests for ft_strrchr!\n");
 	return (0);
 }
