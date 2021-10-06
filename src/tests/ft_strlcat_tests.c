@@ -10,6 +10,7 @@ const static char 	*test_dsts[] = {
 	" ",
 	"\n",
 	"",
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non dictum mauris, eu dignissim turpis. Maecenas lorem justo, suscipit nec nisl non, placerat porttitor velit. Aenean cursus nibh nec porttitor rhoncus. Sed malesuada, arcu quis malesuada dictum, arcu metus interdum odio, in condimentum eros erat eget enim. Donec ultricies ante quam, in vulputate orci imperdiet at. Nam pellentesque, ex quis bibendum lacinia, arcu libero porttitor tellus, id bibendum magna tortor ut felis. In fringilla vel est ac hendrerit. Sed eget congue nisl. Nullam nec tellus id enim lacinia ultricies fermentum tincidunt metus. Vestibulum et nibh volutpat dui auctor rutrum at pretium turpis. Nulla a lacinia enim, sit amet sagittis massa. Quisque congue turpis vel ipsum elementum, eu semper diam vestibulum. Etiam rhoncus mauris ut fermentum vestibulum. Proin bibendum lectus sem. Suspendisse sed turpis et orci gravida commodo sed eget ante. Integer ut egestas purus. Nunc odio erat, maximus quis tristique non, faucibus sit amet tellus. Nullam nec auctor magna, quis facilisis magna. Sed a felis nec augue pharetra tempus quis in neque. Vestibulum magna ligula, luctus a tortor ac, scelerisque semper ex. Aliquam tortor augue, consequat ac egestas vel, molestie et turpis. Aliquam id eros consectetur, venenatis ipsum sit amet, aliquet sapien. Morbi eleifend justo a est elementum, at scelerisque sem interdum. Sed varius mauris sed lorem rutrum, in rhoncus sapien tempus. Donec iaculis gravida orci, ac elementum enim lacinia efficitur. Ut nec neque a nisi luctus bibendum ut vitae turpis. Proin non neque tincidunt, laoreet odio at, condimentum leo. Curabitur finibus risus ac turpis rhoncus, quis elementum arcu condimentum. Aliquam tortor augue, feugiat sed elementum ac, consectetur ut orci. Cras ornare lacus mauris. Suspendisse sed condimentum magna. Donec ultrices ante massa, eu bibendum sem placerat eget. Donec imperdiet elit quis leo lacinia, at accumsan ante tincidunt. Donec volutpat ac quam eu vulputate. Vivamus porta justo sit amet purus consequat lobortis et posuere velit. In hac habitasse platea dictumst. Suspendisse venenatis luctus quam, vitae lobortis leo convallis tristique. Sed in velit semper, imperdiet erat vel, malesuada sapien. Quisque in nisl libero. Sed vestibulum elit ac tortor tincidunt commodo. Nam nec lorem ullamcorper, congue odio ut, pulvinar metus. Morbi fringilla congue nibh a pretium. Proin sodales mi non sem rhoncus condimentum. Morbi faucibus auctor neque sed facilisis. Curabitur gravida elementum augue a tristique. Vivamus sit amet nulla commodo, sodales mauris a, blandit nisl. Donec eget mauris mollis mi laoreet tristique. Quisque condimentum diam quis consectetur convallis. Maecenas mi urna, fringilla a velit in, tempor tempus libero. Phasellus gravida, nunc a luctus auctor, justo velit interdum urna, eu porttitor urna quam eget metus. Pellentesque non ante eget nisi aliquet ullamcorper. Fusce mollis eget orci ut iaculis. Nunc vitae tristique urna. Cras mauris quam, volutpat non ipsum et, ultricies scelerisque erat. Aliquam erat volutpat. Nulla libero lacus, pulvinar et iaculis nec, varius et urna. Proin lorem ante, posuere vel magna sed, placerat pellentesque odio.",
 	0
 };
 
@@ -25,78 +26,11 @@ const static char	*test_srcs[] = {
 
 size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize);
 
-// static int
-// 	test_strings_no_fit()
-// {
-// 	int		first;
-// 	int		second;
-// 	size_t	retc;
-// 	size_t	rett;
-// 	size_t	flen;
-// 	size_t	slen;
-// 	char	*strs_o[] = {
-// 		"Hallo dit is een string",
-// 		"Hallo",
-// 		" string",
-// 		" ",
-// 		"\n",
-// 		"",
-// 		0
-// 	};
-// 	char	 *strs_s[] = {
-// 		"Lorem ipsum dolor sit amet, consectetur.",
-// 		"non, placerat porttitor velit. ",
-// 		"consequat ac egestas vel, molestie et turpis. Aliquam",
-// 		"\n",
-// 		" ",
-// 		"",
-// 		0
-// 	};
-// 	char	cbuffer[1024];
-// 	char	tbuffer[1024];
-// 	first = 0;
-// 	while (strs_o[first])
-// 	{
-// 		second = 0;
-// 		while (strs_s[second])
-// 		{
-// 			flen = strlen(strs_o[first]);
-// 			slen = strlen(strs_s[second]);
-// 			while (slen)
-// 			{
-// 				memset(cbuffer, 0, 1024);
-// 				memset(tbuffer, 0, 1024);
-// 				memcpy(cbuffer, strs_o[first], flen);
-// 				memcpy(tbuffer, strs_o[first], flen);
-
-// 				rett = ft_strlcat(tbuffer, strs_s[second], flen + slen);
-// 				retc = strlcat(cbuffer, strs_s[second], flen + slen);
-// 				if (memcmp(tbuffer, cbuffer, 1024))
-// 				{
-// 					printf("Failed test_strings_no_fit. Expected 0, got: %d at first:%d second:%d offset:%lu\n", memcmp(tbuffer, cbuffer, 1024), first, second, strlen(strs_s[second]) - slen);
-// 					printf("Correct:\n%s\n", cbuffer);
-// 					printf("Test:\n%s\n", tbuffer);
-// 					return (0);
-// 				}
-// 				if (rett != retc)
-// 				{
-// 					printf("Failed test_strings_no_fit. Expected return:%zu got: %zu at first:%d second:%d offset:%lu\n", retc, rett, first, second, strlen(strs_s[second]) - slen);
-// 					return (0);
-// 				}
-// 				slen--;
-// 			}
-// 			second++;
-// 		}
-// 		first++;
-// 	}
-// 	return (1);
-// }
-
 static int
-	test_single(const char *tdst, const char *tsrc, size_t tsize)
+	test_single_b(const char *tdst, const char *tsrc, size_t tsize, size_t buffer_size)
 {
-	char	test_dst[200];
-	char	corr_dst[200];
+	char	test_dst[buffer_size];
+	char	corr_dst[buffer_size];
 	size_t	tret;
 	size_t	cret;
 	size_t	tdst_size;
@@ -116,10 +50,16 @@ static int
 	}
 	if (memcmp(test_dst, corr_dst, tsize))
 	{
-		printf("Failed test_single for ft_strlcat! Expected:\n%s\ngot:%s\n", corr_dst, test_dst);
+		printf("Failed test_single for ft_strlcat! Expected:\n%s\ngot:\n%s\n", corr_dst, test_dst);
 		return (0);
 	}
 	return (1);
+}
+
+static int
+	test_single(const char *tdst, const char *tsrc, size_t tsize)
+{
+	return (test_single_b(tdst, tsrc, tsize, 4048));
 }
 
 static int
@@ -216,6 +156,17 @@ static int
 	return (1);
 }
 
+static int
+	test_segfaults()
+{
+	char	temp[1024 * 1000];
+	char	*str = "Hallo";
+	
+	memset(temp, 0xFF, 1024 * 1000);
+	//memset(temp, 0xFF, (1024 * 1000) - 10);
+	return (test_single_b(temp, str, 1024 * 1000, 1024 * 1001));
+}
+
 int
 	test_strlcat()
 {
@@ -227,6 +178,8 @@ int
 	if (!test_strings_fit())
 		ret = 0;
 	if (!test_strings_no_fit())
+		ret = 0;
+	if (!test_segfaults())
 		ret = 0;
 	return (ret);
 }
