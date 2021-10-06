@@ -7,11 +7,16 @@ size_t
 {
 	size_t	dstlen;
 	size_t	srclen;
+	size_t	len;
 
 	dstlen = ft_strlen(dst);
 	srclen = ft_strlen(src);
 	if (!dstsize || dstlen > dstsize)
-		return (dstlen + srclen);
+		return (dstsize + srclen);
+	if (srclen >= (dstsize - dstlen))
+		len = dstsize - dstlen - 1;
+	else
+		len = srclen;	
 	while (*dst) {
 		dst++;
 		dstsize--;
@@ -20,12 +25,12 @@ size_t
 	}
 	if (!dstsize)
 		return (dstlen + srclen);
-	while (dstsize - 1)
+	while (len)
 	{
 		*dst = *src;
 		src++;
 		dst++;
-		dstsize--;
+		len--;
 	}
 	*dst = '\0';
 	return (dstlen + srclen);
