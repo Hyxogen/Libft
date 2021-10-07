@@ -52,6 +52,59 @@ static int
 }
 
 static int
+	test_no_find()
+{
+	unsigned char	buf[256];
+	int				index;
+	int				missing;
+
+	missing = 0;
+	while (missing < 256)
+	{
+		index = 0;
+		while (index < 256)
+		{
+			if((index + 1) == missing)
+				buf[index] = (missing + 1) % 256;
+			else
+				buf[index] = (index + 1) % 256;
+			index++;
+		}
+		if (!test_all_a(buf, 256))
+		{
+			printf("At test_no_find. Missing:%d\n\n", missing);
+			return (0);
+		}
+		missing++;
+	}
+	return (1);
+}
+
+static int
+	test_duplicates()
+{
+	unsigned char	buf[256 * 2];
+	int				index;
+	int				counter;
+
+	index = 0;
+	counter = 0;
+	while (index < 256)
+	{
+		buf[index] = (counter + 1) % 256;
+		buf[index + 1] = (counter + 1) % 256;
+		counter++;
+		index += 2;
+	}
+	if (!test_all_a(buf, 256))
+	{
+		printf("At test_duplicates.\n\n");
+		return (0);
+	}
+	return (1);
+}
+
+static int
 	test_all()
 {
 	unsigned char	buf[256];
@@ -66,7 +119,7 @@ static int
 
 	if (!test_all_a(buf, 256))
 	{
-		printf("At test_all.\n");
+		printf("At test_all.\n\n");
 		return (0);
 	}
 	return (1);
@@ -79,6 +132,10 @@ int
 
 	ret = 1;
 	if (!test_all())
+		ret = 0;
+	if (!test_no_find())
+		ret = 0;
+	if (!test_duplicates())
 		ret = 0;
 	return (ret);
 }
