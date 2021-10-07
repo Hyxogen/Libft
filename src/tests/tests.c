@@ -18,6 +18,7 @@ int	test_strchr();
 int	test_strrchr();
 int	test_strncmp();
 int	test_memchr();
+int	test_memcmp();
 
 //TODO remove 'restrict' keyword from functions
 //TODO fill in UINT_MAX in places that accept numbers
@@ -96,5 +97,9 @@ int
 		printf("Test for ft_memchr failed!\n");
 	else
 		printf("Passed tests for ft_memchr!\n");
+	if (!test_memcmp())
+		printf("Test for ft_memcmp failed!\n");
+	else
+		printf("Passed tests for ft_memcmp!\n");
 	return (0);
 }
