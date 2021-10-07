@@ -7,6 +7,7 @@ int test_isalnum();
 int	test_isdigit();
 int	test_isascii();
 int	test_isprint();
+int	test_isspace();
 int	test_bzero();
 int	test_memcpy();
 int	test_memmove();
@@ -44,6 +45,10 @@ int
 		printf("Test for ft_isprint failed!\n");
 	else
 		printf("Passed tests for ft_isprint!\n");
+	if (!test_isspace())
+		printf("Test for ft_isspace failed!\n");
+	else
+		printf("Passed tests for ft_isspace!\n");
 	if (!test_isascii())
 		printf("Test for ft_isascii failed!\n");
 	else
