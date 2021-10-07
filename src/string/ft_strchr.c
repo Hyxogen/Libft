@@ -4,9 +4,9 @@ char
 	while (1)
 	{
 		if (*str == (char) c)
-			return ((char*) str);
+			return ((char *) str);
 		else if (!*str)
-			break;
+			break ;
 		str++;
 	}
 	return (0);

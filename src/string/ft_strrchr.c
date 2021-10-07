@@ -7,7 +7,7 @@ char
 	while (1)
 	{
 		if (*str == (char) c)
-			ret = (char*) str;
+			ret = (char *) str;
 		if (!*str)
 			break ;
 		str++;

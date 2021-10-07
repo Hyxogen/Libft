@@ -3,7 +3,7 @@
 size_t	ft_strlen(const char *str);
 
 size_t
-	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
+	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	dstlen;
 	size_t	srclen;
@@ -16,8 +16,9 @@ size_t
 	if (srclen >= (dstsize - dstlen))
 		len = dstsize - dstlen - 1;
 	else
-		len = srclen;	
-	while (*dst) {
+		len = srclen;
+	while (*dst) 
+	{
 		dst++;
 		dstsize--;
 		if (!dstsize)

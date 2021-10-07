@@ -5,7 +5,7 @@ void
 {
 	unsigned char	*arr;
 
-	arr = (unsigned char*) s;
+	arr = (unsigned char *) s;
 	while (n)
 	{
 		if (*arr == (unsigned char) c)

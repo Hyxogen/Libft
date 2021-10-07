@@ -50,11 +50,11 @@ static int
 		printf("At test_equals with same pointer\n\n");
 		return (0);
 	}
-	// if (!test_all_a(&buf1[0], &buf2[0], 256))
-	// {
-	// 	printf("At test_equals with diffrent pointer\n\n");
-	// 	return (0);
-	// }
+	if (!test_all_a(&buf1[0], &buf2[0], 256))
+	{
+		printf("At test_equals with diffrent pointer\n\n");
+		return (0);
+	}
 	return (1);
 }
 
