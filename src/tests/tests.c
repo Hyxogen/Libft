@@ -25,7 +25,9 @@ int	test_atoi();
 int	test_calloc();
 int	test_strdup();
 
-// #define QUICKTEST
+int	test_substr();
+
+#define QUICKTEST
 
 //TODO remove 'restrict' keyword from functions
 //TODO fill in UINT_MAX in places that accept numbers
@@ -130,5 +132,10 @@ int
 		printf("Test for ft_strdup failed!\n");
 	else
 		printf("Passed tests for ft_strdup!\n");
+
+	if (!test_substr())
+		printf("Test for ft_substr failed!\n");
+	else
+		printf("Passed tests for ft_substr!\n");
 	return (0);
 }
