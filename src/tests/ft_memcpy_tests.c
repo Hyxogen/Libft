@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void	*ft_memcpy(void *restrict dest, const void *restrict src, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 static int
 	test_null()

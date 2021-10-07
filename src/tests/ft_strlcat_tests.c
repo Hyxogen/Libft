@@ -24,7 +24,7 @@ const static char	*test_srcs[] = {
 	0
 };
 
-size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 static int
 	test_single_b(const char *tdst, const char *tsrc, size_t tsize, size_t buffer_size)

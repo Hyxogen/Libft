@@ -13,7 +13,7 @@ const static char 	*test_srcs[] = {
 	0
 };
 
-size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 static int
 	test_single(const char *tsrc, size_t tsize)
