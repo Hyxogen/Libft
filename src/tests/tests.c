@@ -21,6 +21,7 @@ int	test_strncmp();
 int	test_memchr();
 int	test_memcmp();
 int	test_strnstr();
+int	test_atoi();
 
 // #define QUICKTEST
 
@@ -115,5 +116,9 @@ int
 	else
 		printf("Passed tests for ft_strnstr!\n");
 	#endif
+	if (!test_atoi())
+		printf("Test for ft_atoi failed!\n");
+	else
+		printf("Passed tests for ft_atoi!\n");
 	return (0);
 }
