@@ -3,7 +3,7 @@
 size_t	ft_strlen(const char *str);
 
 size_t
-	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
+	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	srclen;
 	size_t	len;
