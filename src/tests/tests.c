@@ -23,8 +23,9 @@ int	test_memcmp();
 int	test_strnstr();
 int	test_atoi();
 int	test_calloc();
+int	test_strdup();
 
-#define QUICKTEST
+// #define QUICKTEST
 
 //TODO remove 'restrict' keyword from functions
 //TODO fill in UINT_MAX in places that accept numbers
@@ -125,5 +126,9 @@ int
 		printf("Test for ft_calloc failed!\n");
 	else
 		printf("Passed tests for ft_calloc!\n");
+	if (!test_strdup())
+		printf("Test for ft_strdup failed!\n");
+	else
+		printf("Passed tests for ft_strdup!\n");
 	return (0);
 }
