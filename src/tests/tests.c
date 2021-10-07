@@ -19,6 +19,9 @@ int	test_strrchr();
 int	test_strncmp();
 int	test_memchr();
 int	test_memcmp();
+int	test_strnstr();
+
+// #define QUICKTEST
 
 //TODO remove 'restrict' keyword from functions
 //TODO fill in UINT_MAX in places that accept numbers
@@ -93,6 +96,7 @@ int
 		printf("Test for ft_strncmp failed!\n");
 	else
 		printf("Passed tests for ft_strncmp!\n");
+	#ifndef QUICKTEST
 	if (!test_memchr())
 		printf("Test for ft_memchr failed!\n");
 	else
@@ -101,5 +105,10 @@ int
 		printf("Test for ft_memcmp failed!\n");
 	else
 		printf("Passed tests for ft_memcmp!\n");
+	if (!test_strnstr())
+		printf("Test for ft_strnstr failed!\n");
+	else
+		printf("Passed tests for ft_strnstr!\n");
+	#endif
 	return (0);
 }
