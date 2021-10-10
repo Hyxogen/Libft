@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "../../include/libft.h"
 
 char
@@ -11,7 +12,7 @@ char
 		return (0);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	ret = ft_calloc(s1_len + s2_len + 1, sizeof(char));
+	ret = malloc(s1_len + s2_len + 1);
 	ft_memcpy(ret, s1, s1_len);	
 	ft_memcpy(ret + s1_len, s2, s2_len + 1);
 	return (ret);	
