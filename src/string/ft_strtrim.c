@@ -1,40 +1,6 @@
 #include <stdlib.h>
 #include "../../include/libft.h"
 
-static char
-	*ft_strchrset(const char *str, const char *charset)
-{
-	char	*closest_pos;
-	char	*char_pos;
-
-	closest_pos = 0;
-	while (*charset)
-	{
-		char_pos = ft_strchr(str, *charset);
-		if (char_pos && (!closest_pos || char_pos < closest_pos))
-			closest_pos = char_pos;
-		charset++;
-	}
-	return (closest_pos);
-}
-
-static char
-	*ft_strrchrset(const char *str, const char *charset)
-{
-	char	*closest_pos;
-	char	*char_pos;
-
-	closest_pos = 0;
-	while (*charset)
-	{
-		char_pos = ft_strrchr(str, *charset);
-		if (char_pos && (!closest_pos || char_pos > closest_pos))
-			closest_pos = char_pos;
-		charset++;
-	}
-	return (closest_pos);
-}
-
 char
 	*ft_strtrim(char const *str, char const *set)
 {
