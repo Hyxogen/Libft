@@ -77,7 +77,7 @@ static int
 		memmove(carr + offset, carr, 2024 * sizeof(int));
 		if (memcmp(carr, tarr, 4048 * sizeof(int)))
 		{
-			printf("Failed test_fill_overlap_forward. Expected: 1, got: 0 at offset:%d\n", offset);
+			printf("Failed test_fill_overlap_forward. Expected: 0, got:%d at offset:%d\n", memcmp(carr, tarr, 4048 * sizeof(int)), offset);
 			return (0);
 		}
 		offset++;
