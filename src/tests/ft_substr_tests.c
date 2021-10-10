@@ -48,7 +48,7 @@ static int
 	{
 		if (!test_single(&g_pairs[index]))
 		{
-			printf("At test_all. index%d\n\n", index);
+			printf("At test_all. index:%d\n\n", index);
 			return (0);
 		}
 		index++;
