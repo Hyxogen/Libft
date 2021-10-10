@@ -15,6 +15,8 @@
 # define LIBFT_PRINTABLE_LOW 040
 # define LIBFT_PRINTABLE_HIGH 0176
 
+typedef int	t_bool;
+
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
@@ -41,4 +43,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *str, char const *set);
 #endif

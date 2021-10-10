@@ -24,9 +24,10 @@ int	test_strnstr();
 int	test_atoi();
 int	test_calloc();
 int	test_strdup();
-int	test_strjoin();
 
 int	test_substr();
+int	test_strjoin();
+int	test_strtrim();
 
 #define QUICKTEST
 
@@ -142,5 +143,9 @@ int
 		printf("Test for ft_strjoin failed!\n");
 	else
 		printf("Passed tests for ft_strjoin!\n");
+	if (!test_strtrim())
+		printf("Test for ft_strtrim failed!\n");
+	else
+		printf("Passed tests for ft_strtrim!\n");
 	return (0);
 }
