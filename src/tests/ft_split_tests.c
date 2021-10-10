@@ -43,12 +43,12 @@ int
 		if (!token)
 		{
 			printf("Failed test_single for ft_split. Expected end of array got:%s\n", *test_split);
-			return (1);
+			return (0);
 		}
 		if (strcmp(*test_split, token))
 		{
 			printf("Failed test_single for ft_split.\nExpected:\n%s\nGot:\n%s\n", token, *test_split);
-			return (1);
+			return (0);
 		}
 		test_split++;
 	}
