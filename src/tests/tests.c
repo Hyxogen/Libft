@@ -24,10 +24,12 @@ int	test_strnstr();
 int	test_atoi();
 int	test_calloc();
 int	test_strdup();
+int	test_strsep();
 
 int	test_substr();
 int	test_strjoin();
 int	test_strtrim();
+int	test_split();
 
 #define QUICKTEST
 
@@ -134,6 +136,12 @@ int
 		printf("Test for ft_strdup failed!\n");
 	else
 		printf("Passed tests for ft_strdup!\n");
+	if (!test_strsep())
+		printf("Test for ft_strsep failed!\n");
+	else
+		printf("Passed tests for ft_strsep!\n");
+
+
 
 	if (!test_substr())
 		printf("Test for ft_substr failed!\n");
@@ -147,5 +155,9 @@ int
 		printf("Test for ft_strtrim failed!\n");
 	else
 		printf("Passed tests for ft_strtrim!\n");
+	if (!test_split())
+		printf("Test for ft_split failed!\n");
+	else
+		printf("Passed tests for ft_split!\n");
 	return (0);
 }
