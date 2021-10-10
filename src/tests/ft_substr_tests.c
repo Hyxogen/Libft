@@ -11,7 +11,17 @@ typedef struct s_test {
 
 const static t_test g_pairs[] = {
 	{"Hallo, dit is een string!", "dit is een string!", 7, 19},
-	{0, 0, 0, 0}
+	{"Hallo, dit is een string!", "Hallo, dit is een ", 0, 19},
+	{"Hallo, dit is een string!", "", 0, 1},
+	{"Hallo, dit is een string!", "", 1, 1},
+	{"Hallo, dit is een string!", "al", 1, 3},
+	{"Hallo, dit is een string!", 0, 0, 0},
+	{"Hallo, dit is een string!", 0, 50, 0},
+	{"Hallo, dit is een string!", 0, 50, 1},
+	{"Hallo, dit is een string!", 0, 99999, 1},
+	{"", "", 0, 1},
+	{"", 0, 2, 1},
+	{0, 0, 2, 1}
 };
 
 static int
@@ -20,7 +30,7 @@ static int
 	char	*tret;
 
 	tret = ft_substr(test->m_test_str, test->m_start, test->m_len);
-	if (strcmp(tret, test->m_corr_str))
+	if ((tret != 0 && test->m_corr_str != 0) && strcmp(tret, test->m_corr_str))
 	{
 		printf("Failed test_single.\nExpected:\n%s\ngot:\n%s\nm_start:%u m_len:%zu\n", test->m_corr_str, tret, test->m_start, test->m_len);
 		return (0);
