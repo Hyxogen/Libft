@@ -24,6 +24,7 @@ int	test_strnstr();
 int	test_atoi();
 int	test_calloc();
 int	test_strdup();
+int	test_strjoin();
 
 int	test_substr();
 
@@ -137,5 +138,9 @@ int
 		printf("Test for ft_substr failed!\n");
 	else
 		printf("Passed tests for ft_substr!\n");
+	if (!test_strjoin())
+		printf("Test for ft_strjoin failed!\n");
+	else
+		printf("Passed tests for ft_strjoin!\n");
 	return (0);
 }
