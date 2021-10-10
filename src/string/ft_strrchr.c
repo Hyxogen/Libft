@@ -14,3 +14,20 @@ char
 	}
 	return (ret);
 }
+
+char
+	*ft_strrchrset(const char *str, const char *charset)
+{
+	char	*closest_pos;
+	char	*char_pos;
+
+	closest_pos = 0;
+	while (*charset)
+	{
+		char_pos = ft_strrchr(str, *charset);
+		if (char_pos && (!closest_pos || char_pos > closest_pos))
+			closest_pos = char_pos;
+		charset++;
+	}
+	return (closest_pos);
+}
