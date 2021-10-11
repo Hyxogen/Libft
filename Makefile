@@ -8,8 +8,8 @@ LIBSRC	:= src/string/ft_isalnum.c src/string/ft_isalpha.c src/string/ft_isascii.
 OBJDIR	:= obj
 SRCDIR	:= src/string
 TESTDIR	:= src/tests
-#LIBOBJ	:= $(patsubst %.c,$(OBJDIR)/%.o,$(notdir $(LIBSRC)))
-LIBOBJ := $(LIBSRC:.c=.o)
+LIBOBJ	:= $(patsubst %.c,$(OBJDIR)/%.o,$(notdir $(LIBSRC)))
+#LIBOBJ	:= $(LIBSRC:.c=.o)
 TESTSRC := $(wildcard src/tests/*tests.c)
 TESTOBJ := $(patsubst %.c,$(OBJDIR)/%.o,$(notdir TESTSRC)))
 CFLAGS	:= -Wall -Wextra -Werror
@@ -19,7 +19,7 @@ all: $(NAME)
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	gcc $(CLFAGS) -c $< -o $@
 
-$(NAME): $(LIBOBJ) $(LIBSRC)
+$(NAME): $(LIBSRC) $(LIBOBJ)
 	ar rcs $(NAME) $(LIBOBJ)
 
 test: $(NAME)
@@ -34,8 +34,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re:
-	make fclean
-	make $(NAME)
+re: fclean $(NAME)
 
 .PHONY: clean fclean re
