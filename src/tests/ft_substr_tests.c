@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../../include/libft.h"
+#include "../../libft.h"
 #include <string.h>
 
 typedef struct s_test {

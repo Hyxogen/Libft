@@ -1,5 +1,5 @@
 #include <string.h>
-#include "../../include/libft.h"
+#include "../../libft.h"
 
 typedef struct s_test_pair {
 	char	*test_str;

@@ -1,5 +1,5 @@
 #include <string.h>
-#include "../../include/libft.h"
+#include "../../libft.h"
 
 const static char 	*test_strs[] = {
 	"Hallo dit is een string",

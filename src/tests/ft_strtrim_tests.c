@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "../../include/libft.h"
+#include "../../libft.h"
 
 typedef struct s_test {
 	char			*m_test_str1;

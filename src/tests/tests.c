@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <limits.h>
-#include "../../include/libft.h"
+#include "../../libft.h"
 
 int	test_memset();
 int	test_isalpha();
