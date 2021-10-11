@@ -30,6 +30,7 @@ int	test_substr();
 int	test_strjoin();
 int	test_strtrim();
 int	test_split();
+int	test_itoa();
 
 #define QUICKTEST
 
@@ -159,5 +160,9 @@ int
 		printf("Test for ft_split failed!\n");
 	else
 		printf("Passed tests for ft_split!\n");
+	if (!test_itoa())
+		printf("Test for ft_itoa failed!\n");
+	else
+		printf("Passed tests for ft_itoa!\n");
 	return (0);
 }
