@@ -18,7 +18,7 @@ static int
 	else if (num)
 		return (get_length(num / 10) + 1);
 	else
-		return (0);
+		return (1);
 }
 
 char
@@ -34,10 +34,12 @@ char
 	if (long_num < 0)
 	{
 		*ret = '-';
-		ft_itoa_r(ret + 1, long_num * -1, length - 1);
-	} 
+		ft_itoa_r(ret + 1, long_num * -1, length - 2);
+	}
+	else if (long_num > 0)
+		ft_itoa_r(ret, long_num, length - 1);
 	else
-		ft_itoa_r(ret, long_num, length);
+		ret[0] = '0';
 	ret[length] = '\0';
 	return (ret);
 }

@@ -7,6 +7,7 @@ typedef struct s_test_pair {
 }			t_test_pair;
 
 const static t_test_pair g_tests[] = {
+	{0, "0"},
 	{42, "42"},
 	{-42, "-42"},
 	{-128, "-128"},

@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <limits.h>
+#include "../../include/libft.h"
 
 int	test_memset();
 int	test_isalpha();
@@ -34,7 +36,7 @@ int	test_itoa();
 int	test_strmapi();
 int test_striteri();
 
-#define QUICKTEST
+//#define QUICKTEST
 
 //TODO remove 'restrict' keyword from functions
 //TODO fill in UINT_MAX in places that accept numbers
@@ -168,12 +170,11 @@ int
 		printf("Passed tests for ft_itoa!\n");
     if (!test_strmapi())
 		printf("Test for ft_strmapi failed!\n");
-	else
+    else
 		printf("Passed tests for ft_strmapi!\n");
     if (!test_striteri())
 		printf("Test for ft_striteri failed!\n");
-	else
+    else
 		printf("Passed tests for ft_striteri!\n");
-
 	return (0);
 }

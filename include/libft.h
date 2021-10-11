@@ -52,4 +52,8 @@ char	*ft_strsep(char **stringp, const char *delim);
 char	*ft_itoa(int num);
 char	*ft_strmapi(char const *str, char (*func)(unsigned int, char));
 void	ft_striteri(char *str, void (*func)(unsigned int, char*));
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *str, int fd);
+void	ft_putendl_fd(char *str, int fd);
+void	ft_putnbr_fd(int n, int fd);
 #endif
