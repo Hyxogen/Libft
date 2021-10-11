@@ -32,6 +32,7 @@ int	test_strtrim();
 int	test_split();
 int	test_itoa();
 int	test_strmapi();
+int test_striteri();
 
 #define QUICKTEST
 
@@ -169,6 +170,10 @@ int
 		printf("Test for ft_strmapi failed!\n");
 	else
 		printf("Passed tests for ft_strmapi!\n");
+    if (!test_striteri())
+		printf("Test for ft_striteri failed!\n");
+	else
+		printf("Passed tests for ft_striteri!\n");
 
 	return (0);
 }

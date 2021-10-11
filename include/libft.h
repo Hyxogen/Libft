@@ -51,4 +51,5 @@ char	**ft_split(char const *str, char c);
 char	*ft_strsep(char **stringp, const char *delim);
 char	*ft_itoa(int num);
 char	*ft_strmapi(char const *str, char (*func)(unsigned int, char));
+void	ft_striteri(char *str, void (*func)(unsigned int, char*));
 #endif
