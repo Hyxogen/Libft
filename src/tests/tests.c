@@ -31,6 +31,7 @@ int	test_strjoin();
 int	test_strtrim();
 int	test_split();
 int	test_itoa();
+int	test_strmapi();
 
 #define QUICKTEST
 
@@ -164,5 +165,10 @@ int
 		printf("Test for ft_itoa failed!\n");
 	else
 		printf("Passed tests for ft_itoa!\n");
+    if (!test_strmapi())
+		printf("Test for ft_strmapi failed!\n");
+	else
+		printf("Passed tests for ft_strmapi!\n");
+
 	return (0);
 }
