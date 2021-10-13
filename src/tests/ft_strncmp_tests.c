@@ -13,6 +13,7 @@ const static char	*strs[] = {
 	"Nullam lobortis magna ac euismod pellentesque.",
 	"Nam volutpat lacus posuere, viverra odio sed, porta metus.",
 	"",
+	"lorem ipsum dolor sit amet",
 	"Hallo, lobortis magna ac euismod pellentesque."
 	"L",
 	"\xFF"
@@ -97,6 +98,16 @@ static int
 	return (1);
 }
 
+static int
+	test_custom()
+{
+	if (!test_single("lorem ipsum dolor sit amet", "ipsumm", 30))
+		return (0);
+	if (!test_single("lorem ipsum dolor sit amet", "consectetur", 30))
+		return (0);
+	return (1);
+}
+
 //TODO test for big n (lile UINT_MAX)
 int
 	test_strncmp()
@@ -107,6 +118,8 @@ int
 	if (!test_all())
 		ret = 0;
 	if (!test_bigger())
+		ret = 0;
+	if (!test_custom())
 		ret = 0;
 	return (ret);
 }

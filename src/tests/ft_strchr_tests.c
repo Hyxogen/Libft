@@ -6,7 +6,6 @@ char	*ft_strchr(const char *str, int c);
 static int
 	test_single(const char *str, int c)
 {
-	printf("str:%s char:%c\n", str, c);
 	if (ft_strchr(str, c) != strchr(str, c))
 	{
 		printf("Failed test_single for ft_strchr. Expected:%lx got:%lx\n", (unsigned long) strchr(str, c), (unsigned long) ft_strchr(str, c));
