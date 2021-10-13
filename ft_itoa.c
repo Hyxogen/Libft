@@ -1,45 +1,51 @@
-#include "libft.h"
+#include <stdlib.h>
 
-static void
-	ft_itoa_r(char *str, long num, int pos)
+int
+	get_num_size(long num)
 {
-	if (pos)
-	{
-		ft_itoa_r(str, num / 10, pos - 1);
-		str[pos - 1] = '0' + (num % 10);
-	}
-}
+	int	ret;
 
-static int
-	get_length(long num)
-{
-	if (num < 0)
-		return (get_length(-1 * (num / 10)) + 2);
-	else if (num)
-		return (get_length(num / 10) + 1);
-	else
+	ret = 0;
+	if (num == 0)
 		return (1);
+	if (num < 0)
+	{
+		ret++;
+		num *= 1;
+	}
+	while (num)
+	{
+		ret++;
+		num /= 10;
+	}
+	return (ret);
 }
 
 char
 	*ft_itoa(int num)
 {
 	long	long_num;
-	int		length;
+	int		num_size;
 	char	*ret;
 
 	long_num = num;
-	length = get_length(long_num);
-	ret = malloc(length + 1);
+	num_size = get_num_size(num);
+	ret = malloc(num_size + 1);
+	if (!ret)
+		return (0);
+	ret[num_size] = '\0';
 	if (long_num < 0)
 	{
-		*ret = '-';
-		ft_itoa_r(ret + 1, long_num * -1, length - 2);
+		long_num *= -1;
+		ret[0] = '-';
 	}
-	else if (long_num > 0)
-		ft_itoa_r(ret, long_num, length - 1);
-	else
-		ret[0] = '0';
-	ret[length] = '\0';
+	while (1)
+	{
+		ret[num_size - 1] = '0' + (long_num % 10);
+		long_num /= 10;
+		num_size--;
+		if (!long_num)
+			break ;
+	}
 	return (ret);
 }

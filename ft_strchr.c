@@ -28,3 +28,4 @@ char
 	}
 	return (closest_pos);
 }
+

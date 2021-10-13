@@ -3,9 +3,9 @@
 char
 	*ft_strmapi(char const *str, char (*func)(unsigned int, char))
 {
-	char						*copy;
-	char						*ret;
-	unsigned int		index;
+	unsigned int	index;
+	char			*copy;
+	char			*ret;
 
 	copy = ft_strdup(str);
 	if (!copy)

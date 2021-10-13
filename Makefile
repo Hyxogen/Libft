@@ -15,7 +15,7 @@ CFLAGS	:= -Wall -Wextra -Werror
 all: $(NAME)
 
 %.o: %.c
-	gcc $(CLFAGS) -c $< -o $@
+	gcc $(CFLAGS) -c $< -o $@
 
 $(NAME): $(LIBSRC) $(LIBOBJ)
 	ar rcs $(NAME) $(LIBOBJ)

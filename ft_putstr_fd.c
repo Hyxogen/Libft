@@ -6,4 +6,3 @@ void
 {
 	write(fd, str, ft_strlen(str));
 }
-

@@ -6,7 +6,7 @@ void
 	char		*dest_arr;
 	const char	*src_arr;
 
-	if (!dest || !src || !len)
+	if ((dest == src) || !len)
 		return (dest);
 	dest_arr = dest;
 	src_arr = src;

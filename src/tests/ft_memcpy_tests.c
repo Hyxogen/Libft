@@ -9,12 +9,8 @@ static int
 	int	src[2024] = { 0, 4, 2, 1, 9, 8, 6, 5, 3, 7};
 	int	dest[2024];
 
-	ft_memcpy(0, src, 2024);
-	ft_memcpy(dest, 0, 2024);
 	ft_memcpy(0, 0, 2024);
 	ft_memcpy(dest, src, 0);
-	ft_memcpy(0, src, 0);
-	ft_memcpy(dest, 0, 0);
 	return (1);
 }
 

@@ -7,4 +7,3 @@ void
 	ft_putstr_fd(str, fd);
 	write(fd, "\n", 1);
 }
-

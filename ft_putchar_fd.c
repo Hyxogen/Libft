@@ -5,4 +5,3 @@ void
 {
 	write(fd, &c, 1);
 }
-

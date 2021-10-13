@@ -11,8 +11,6 @@ static int
 
 	ft_memmove(0, 0, 0);
 	ft_memmove(0, 0, 2024 * sizeof(int));
-	ft_memmove(0, &arr[0], 0);
-	ft_memmove(&arr[0], 0, 0);
 	ft_memmove(&arr[0], &arr[0], 0);
 	return (1);
 }
