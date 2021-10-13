@@ -15,6 +15,7 @@ const static char	*strs[] = {
 	"",
 	"Hallo, lobortis magna ac euismod pellentesque."
 	"L",
+	"\xFF"
 	"\n",
 	0
 };
