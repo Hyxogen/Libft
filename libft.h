@@ -17,6 +17,8 @@
 # define LIBFT_PRINTABLE_HIGH 0176
 
 typedef int	t_bool;
+# define TRUE 1
+# define FALSE 0
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
