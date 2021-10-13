@@ -17,7 +17,7 @@ size_t
 		len = dstsize - dstlen - 1;
 	else
 		len = srclen;
-	while (*dst) 
+	while (*dst)
 	{
 		dst++;
 		dstsize--;

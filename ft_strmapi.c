@@ -8,6 +8,8 @@ char
 	unsigned int		index;
 
 	copy = ft_strdup(str);
+	if (!copy)
+		return (0);
 	ret = copy;
 	index = 0;
 	while (*copy)

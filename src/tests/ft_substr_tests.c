@@ -11,14 +11,17 @@ typedef struct s_test {
 
 const static t_test g_pairs[] = {
 	{"Hallo, dit is een string!", "dit is een string!", 7, 19},
-	{"Hallo, dit is een string!", "Hallo, dit is een ", 0, 19},
-	{"Hallo, dit is een string!", "", 0, 1},
-	{"Hallo, dit is een string!", "", 1, 1},
-	{"Hallo, dit is een string!", "al", 1, 3},
+	{"Hallo, dit is een string!", "Hallo, dit is een s", 0, 19},
+	{"Hallo, dit is een string!", "H", 0, 1},
+	{"Hallo, dit is een string!", "a", 1, 1},
+	{"Hallo, dit is een string!", "all", 1, 3},
 	{"Hallo, dit is een string!", 0, 0, 0},
 	{"Hallo, dit is een string!", 0, 50, 0},
 	{"Hallo, dit is een string!", 0, 50, 1},
 	{"Hallo, dit is een string!", 0, 99999, 1},
+	{"Hallo, dit is een string!", 0, 25, 1},
+	{"Hallo, dit is een string!", 0, 26, 1},
+	{"Hallo, dit is een string!", 0, 24, 1},
 	{"", "", 0, 1},
 	{"", 0, 2, 1},
 	{0, 0, 2, 1}

@@ -8,6 +8,7 @@ void
 	void	*ret;
 
 	ret = malloc(count * size);
-	ft_bzero(ret, count * size);
+	if (ret)
+		ft_bzero(ret, count * size);
 	return (ret);
 }

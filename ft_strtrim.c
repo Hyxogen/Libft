@@ -1,20 +1,54 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char
-	*ft_strtrim(char const *str, char const *set)
+static t_bool
+	is_in(char c, const char *charset)
 {
-	char	*ret;
-	size_t	str_len;
-	size_t	new_len;
-	t_bool	trim_start;
-	t_bool	trim_end;
-	
+	while (*charset)
+	{
+		if (*charset == c)
+			return (TRUE);
+		charset++;
+	}
+	return (FALSE);
+}
+
+static const char
+	*ft_strtrim_r(const char *str, const char *const charset, size_t *str_len)
+{
+	const char	*end;
+	const char	*begin;
+
+	while (*str && is_in(*str, charset))
+		str++;
+	if (!*str)
+	{
+		*str_len = 0;
+		return (str);
+	}
+	begin = str;
+	while (*str)
+	{
+		if (!is_in(*str, charset))
+			end = str;
+		str++;
+	}
+	*str_len = end - begin + 1;
+	return (begin);
+}
+
+char
+	*ft_strtrim(char const *str, char const *charset)
+{
+	const char	*trimmed_string;
+	char				*ret;
+	size_t			str_len;
+
 	str_len = ft_strlen(str);
-	trim_start = ft_strchrset(str, set) == str;
-	trim_end = ft_strrchrset(str, set) == (str + str_len - 1);
-	new_len = str_len - trim_start - trim_end;
-	ret = malloc(new_len + 1);
-	ft_strlcpy(ret, str + trim_start, new_len + 1);
+	trimmed_string = ft_strtrim_r(str, charset, &str_len);
+	ret = malloc(str_len + 1);
+	if (!ret)
+		return (0);
+	ft_strlcpy(ret, trimmed_string, str_len + 1);
 	return (ret);
 }

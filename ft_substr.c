@@ -6,16 +6,15 @@ char
 {
 	char	*ret;
 
-	if (!str || !len)
+	if (!len)
 		return (0);
 	while (start && *str)
 	{
 		str++;
 		start--;
 	}
-	if (start && !*str)
-		return (0);
-	ret = malloc(len);
-	ft_strlcpy(ret, str, len);
+	ret = malloc(len + 1);
+	if (ret)
+		ft_strlcpy(ret, str, len + 1);
 	return (ret);
 }

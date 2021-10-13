@@ -36,7 +36,7 @@ int	test_itoa();
 int	test_strmapi();
 int test_striteri();
 
-//#define QUICKTEST
+#define QUICKTEST
 
 //TODO remove 'restrict' keyword from functions
 //TODO fill in UINT_MAX in places that accept numbers

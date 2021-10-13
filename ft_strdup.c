@@ -13,6 +13,8 @@ char
 
 	len = ft_strlen(str) + 1;
 	ret = malloc(len);
+	if (!ret)
+		return (0);
 	ft_memcpy(ret, str, len);
 	return (ret);
 }

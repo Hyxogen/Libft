@@ -3,6 +3,8 @@
 
 const static char 	*test_strs[] = {
 	"Hallo dit is een string",
+	"\0aa\0bbb",
+	"      split       this for   me  !       ",
 	"Hallo",
 	" string",
 	" ",
@@ -16,7 +18,7 @@ const static char	test_delims[] = {
 	'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 	' ',
 	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-	'\0'  
+	'\0'
 };
 
 int
@@ -40,6 +42,8 @@ int
 		while (*corr_string && *corr_string == delim)
 			corr_string++;
 		token = strsep(&corr_string, delim_string);
+		if (!*token)
+			token = NULL;
 		if (!token)
 		{
 			printf("Failed test_single for ft_split. Expected end of array got:%s\n", *test_split);
@@ -66,16 +70,28 @@ static int
 	while (test_strs[str_index])
 	{
 		delim_index = 0;
-		while (test_delims[delim_index])
+		while (1)
 		{
 			if (!test_single(test_strs[str_index], test_delims[delim_index]))
 			{
 				printf("At test_all. str_index:%d delim_index:%d\n\n", str_index, delim_index);
 				return (0);
 			}
+			if (!test_delims[delim_index])
+				break;
 			delim_index++;
 		}
 		str_index++;
+	}
+	return (1);
+}
+
+static int
+	test_segfault()
+{
+	if (!test_single("\0aa\0bbb", '\0'))
+	{
+		printf("At test_segfault.\n\n");
 	}
 	return (1);
 }
@@ -87,6 +103,8 @@ int
 
 	ret = 1;
 	if (!test_all())
+		ret = 0;
+	if (!test_segfault())
 		ret = 0;
 	return (ret);
 }

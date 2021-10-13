@@ -10,11 +10,9 @@ typedef struct s_test {
 
 const static t_test g_pairs[] = {
 	{"Hallo", "", "Hallo"},
-	{"Hallo", "h", "Hallo"},
-	{"Hallo", "H", "allo"},
-	{"Hallo", "o", "Hall"},
-	{"Hallo", "Halo", "all"},
-	{"Hallo, dit is een stringh", "Halo", "allo, dit is een stringh"},
+	{"XYZHalloZYX", "XYZ", "Hallo"},
+	{"     Hallo    ", " ", "Hallo"},
+	{"Hallo", "Ho", "all"},
 	{0, 0, 0},
 };
 
@@ -28,7 +26,7 @@ static int
 		return (1);
 	if (strcmp(ret_str, test->m_corr_str))
 	{
-		printf("Failed test_single for ft_strtrim. Expected:\n%s\ngot:\n%s\n", test->m_corr_str, ret_str);
+		printf("Failed test_single for ft_strtrim. Expected:\n\"%s\"\ngot:\"\n%s\"\n", test->m_corr_str, ret_str);
 		return (0);
 	}
 	return (1);
