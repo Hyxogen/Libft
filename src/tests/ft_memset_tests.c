@@ -8,7 +8,7 @@ static int
 {
 	char	*ctemp;
 	char	*ttemp;
-	
+
 	ctemp = memset(0, 0, 0);
 	ttemp = ft_memset(0, 0, 0);
 	return (1);
@@ -21,6 +21,7 @@ static int
 	char	ttemp[100];
 	void*	tret;
 	int		index;
+	int		diff;
 
 	//TODO check if return value is correct
 	index = 0;
@@ -28,9 +29,10 @@ static int
 	{
 		memset(ctemp, 0, index);
 		tret =ft_memset(ttemp, 0, index);
-		if (memcmp(ctemp, ttemp, index))
+		diff = memcmp(ctemp, ttemp, index);
+		if (diff)
 		{
-			printf("Failed test_fill_zero_s. Expected: 1, got: 0 at index:%d\n", index);
+			printf("Failed test_fill_zero_s. Expected: 0 got: %d at index:%d\n", diff, index);
 			return (0);
 		}
 		if (tret != &ttemp[0])
@@ -81,7 +83,11 @@ int
 	test_memset()
 {
 	int ret;
+	char buffer[10];
 
+	memset(&buffer[0], 0xFF, 3);
+	ft_memset(&buffer[0], 0, 3);
+//	return (0);
 	ret = 1;
 	if (!test_nulldest())
 		ret = 0;
