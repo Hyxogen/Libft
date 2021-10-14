@@ -13,22 +13,20 @@ static size_t
 }
 
 static void
-	fill_array(char **out, const char *str, const char *delim)
+	fill_array(char **out, char *dup, const char *delim)
 {
-	char	*dup;
 	char	*token_start;
 
-	dup = ft_strdup(str);
 	while (1)
 	{
 		token_start = ft_strsep(&dup, delim);
 		if (token_start == dup)
-			continue;
+			continue ;
 		if (!dup && *token_start)
 		{
 			*out = token_start;
 			*(out + 1) = 0;
-			break;
+			break ;
 		}
 		else if (!dup)
 		{
@@ -54,6 +52,7 @@ char
 {
 	char	delim[2];
 	char	**ret;
+	char	*dup;
 	size_t	size;
 
 	delim[0] = c;
@@ -64,6 +63,9 @@ char
 	ret = malloc(sizeof(char *) * size);
 	if (!ret)
 		return (0);
-	fill_array(ret, str, delim);
+	dup = ft_strdup(str);
+	if (!dup)
+		return (0);
+	fill_array(ret, dup, delim);
 	return (ret);
 }

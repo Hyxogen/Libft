@@ -8,7 +8,7 @@ void
 	if (!*lst)
 	{
 		*lst = new;
-		return;
+		return ;
 	}
 	last = *lst;
 	while (last)
@@ -19,4 +19,3 @@ void
 	}
 	last->next = new;
 }
-

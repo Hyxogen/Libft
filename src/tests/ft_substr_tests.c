@@ -21,6 +21,7 @@ const static t_test g_pairs[] = {
 	{"Hallo, dit is een string!", 0, 99999, 1},
 	{"Hallo, dit is een string!", 0, 25, 1},
 	{"Hallo, dit is een string!", 0, 26, 1},
+	{"lorem ipsum dolor sit amet", "", 7, 0},
 	{"Hallo, dit is een string!", 0, 24, 1},
 	{"", "", 0, 1},
 	{"", 0, 2, 1},
@@ -33,6 +34,11 @@ static int
 	char	*tret;
 
 	tret = ft_substr(test->m_test_str, test->m_start, test->m_len);
+	if ((tret == 0) && test->m_corr_str)
+	{
+		printf("Failed test_single.\nExpected:\n%s\nGot:\nNULL\n", test->m_corr_str);
+		return (0);
+	}
 	if ((tret != 0 && test->m_corr_str != 0) && strcmp(tret, test->m_corr_str))
 	{
 		printf("Failed test_single.\nExpected:\n%s\ngot:\n%s\nm_start:%u m_len:%zu\n", test->m_corr_str, tret, test->m_start, test->m_len);

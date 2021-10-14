@@ -5,7 +5,7 @@ static void
 	*ft_memset_eightb(void *dest, int ch, size_t len)
 {
 	uint64_t	*array;
-	uint64_t val;
+	uint64_t	val;
 
 	val = 0;
 	val = (uint8_t) ch;
@@ -26,7 +26,7 @@ static void
 	*ft_memset_fourb(void *dest, int ch, size_t len)
 {
 	uint32_t	*array;
-	uint32_t val;
+	uint32_t	val;
 
 	val = 0;
 	val = (uint8_t) ch;
@@ -42,12 +42,11 @@ static void
 	return (dest);
 }
 
-
 static void
 	*ft_memset_twob(void *dest, int ch, size_t len)
 {
 	uint16_t	*array;
-	uint16_t val;
+	uint16_t	val;
 
 	val = 0;
 	val = (uint8_t) ch;
@@ -100,7 +99,7 @@ void
 void
 	*ft_memset(void *dst, int ch, size_t len)
 {
-	unsigned char *array;
+	unsigned char	*array;
 
 	array = dst;
 	if (len >> 3)

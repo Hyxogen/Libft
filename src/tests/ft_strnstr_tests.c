@@ -146,6 +146,7 @@ int
 	int	ret;
 
 	ret = 1;
+	ft_strnstr("lorem ipsum dolor sit amet", "sit", 10);
 	if (!test_all_haystacks())
 		ret = 0;
 	if (!test_all_haystacks_morphed())

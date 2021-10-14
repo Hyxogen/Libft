@@ -17,7 +17,9 @@ void
 	long	long_num;
 
 	long_num = num;
-	if (long_num < 0)
+	if (num == 0)
+		ft_putchar_fd('0', fd);
+	else if (long_num < 0)
 	{
 		ft_putchar_fd('-', fd);
 		ft_putnbr_fd_r(long_num * -1, fd);

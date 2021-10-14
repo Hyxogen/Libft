@@ -41,7 +41,7 @@ int	test_lstad_front();
 int	test_lstsize();
 int	test_lstlast();
 int	test_lstadd_back();
-#define QUICKTEST
+//#define QUICKTEST
 
 //TODO remove 'restrict' keyword from functions
 //TODO fill in UINT_MAX in places that accept numbers

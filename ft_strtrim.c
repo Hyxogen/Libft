@@ -41,8 +41,8 @@ char
 	*ft_strtrim(char const *str, char const *charset)
 {
 	const char	*trimmed_string;
-	char				*ret;
-	size_t			str_len;
+	char		*ret;
+	size_t		str_len;
 
 	str_len = ft_strlen(str);
 	trimmed_string = ft_strtrim_r(str, charset, &str_len);

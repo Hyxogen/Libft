@@ -16,6 +16,8 @@ char
 			return ((char *) haystack - (needle - needle_start));
 		else if (*haystack == *needle)
 			needle++;
+		if (!*haystack)
+			break ;
 		haystack++;
 		len--;
 	}
