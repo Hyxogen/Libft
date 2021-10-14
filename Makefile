@@ -5,14 +5,18 @@ LIBSRC	:= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_me
 			ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 			ft_strsep.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 			ft_putendl_fd.c ft_putnbr_fd.c
+BONUSRC	:= ft_lstnew.c ft_lstadd_front.c
 TESTDIR	:= src/tests
 LIBOBJ	:= $(patsubst %.c,%.o,$(notdir $(LIBSRC)))
-#LIBOBJ	:= $(LIBSRC:.c=.o)
+BONUOBJ	:= $(patsubst %.c,%.o,$(notdir $(BONUSRC)))
 TESTSRC := $(wildcard src/tests/*tests.c)
 TESTOBJ := $(patsubst %.c,$(OBJDIR)/%.o,$(notdir TESTSRC)))
 CFLAGS	:= -Wall -Wextra -Werror
 
 all: $(NAME)
+
+bonus: $(NAME) $(BONUOBJ)
+	ar rcs $(NAME) $(BONUOBJ)
 
 %.o: %.c
 	gcc $(CFLAGS) -c $< -o $@
