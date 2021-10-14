@@ -36,6 +36,9 @@ int	test_itoa();
 int	test_strmapi();
 int test_striteri();
 
+int	test_lstnew();
+int	test_lstad_front();
+
 #define QUICKTEST
 
 //TODO remove 'restrict' keyword from functions
@@ -168,13 +171,24 @@ int
 		printf("Test for ft_itoa failed!\n");
 	else
 		printf("Passed tests for ft_itoa!\n");
-    if (!test_strmapi())
+	if (!test_strmapi())
 		printf("Test for ft_strmapi failed!\n");
-    else
+	else
 		printf("Passed tests for ft_strmapi!\n");
-    if (!test_striteri())
+	if (!test_striteri())
 		printf("Test for ft_striteri failed!\n");
-    else
+	else
 		printf("Passed tests for ft_striteri!\n");
+
+
+	if (!test_lstnew())
+		printf("Test for ft_lstnew failed!\n");
+	else
+		printf("Passed tests for ft_lstnew!\n");
+	if (!test_lstad_front())
+		printf("Test for ft_lstadd_front failed!\n");
+	else
+		printf("Passed tests for ft_lstadd_front!\n");
+
 	return (0);
 }
