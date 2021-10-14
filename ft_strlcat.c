@@ -1,4 +1,4 @@
-#include <wchar.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *str);
 
@@ -22,17 +22,8 @@ size_t
 		dst++;
 		dstsize--;
 		if (!dstsize)
-			break ;
+			return (dstlen + srclen);
 	}
-	if (!dstsize)
-		return (dstlen + srclen);
-	while (len)
-	{
-		*dst = *src;
-		src++;
-		dst++;
-		len--;
-	}
-	*dst = '\0';
+	ft_strlcpy(dst, src, len + 1);
 	return (dstlen + srclen);
 }
