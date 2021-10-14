@@ -5,7 +5,7 @@ LIBSRC	:= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_me
 			ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 			ft_strsep.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 			ft_putendl_fd.c ft_putnbr_fd.c
-BONUSRC	:= ft_lstnew.c ft_lstadd_front.c
+BONUSRC	:= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c
 TESTDIR	:= src/tests
 LIBOBJ	:= $(patsubst %.c,%.o,$(notdir $(LIBSRC)))
 BONUOBJ	:= $(patsubst %.c,%.o,$(notdir $(BONUSRC)))
@@ -24,13 +24,14 @@ bonus: $(NAME) $(BONUOBJ)
 $(NAME): $(LIBSRC) $(LIBOBJ)
 	ar rcs $(NAME) $(LIBOBJ)
 
-test: $(NAME)
+test: bonus
 	gcc $(CFLAGS) $(NAME) $(TESTSRC)
 
 ntest:
 	gcc $(LIBSRC) $(TESTSRC)
 
 clean:
+	rm -f $(BONUOBJ)
 	rm -f $(LIBOBJ)
 
 fclean: clean

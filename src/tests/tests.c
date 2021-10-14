@@ -38,7 +38,9 @@ int test_striteri();
 
 int	test_lstnew();
 int	test_lstad_front();
-
+int	test_lstsize();
+int	test_lstlast();
+int	test_lstadd_back();
 #define QUICKTEST
 
 //TODO remove 'restrict' keyword from functions
@@ -189,6 +191,17 @@ int
 		printf("Test for ft_lstadd_front failed!\n");
 	else
 		printf("Passed tests for ft_lstadd_front!\n");
-
+	if (!test_lstsize())
+		printf("Test for ft_lstsize failed!\n");
+	else
+		printf("Passed tests for ft_lstsize!\n");
+	if (!test_lstlast())
+		printf("Test for ft_lstlast failed!\n");
+	else
+		printf("Passed tests for ft_lstlast!\n");
+	if (!test_lstadd_back())
+		printf("Test for ft_lstadd_back failed!\n");
+	else
+		printf("Passed tests for ft_lstadd_back!\n");
 	return (0);
 }
