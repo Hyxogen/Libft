@@ -3,5 +3,5 @@
 int
 	ft_isdigit(int c)
 {
-	return (c >= LIBFT_DIGIT_LOW && c <= LIBFT_DIGIT_HIGH);
+	return (c >= '0' && c <= '9');
 }
