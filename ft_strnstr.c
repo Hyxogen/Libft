@@ -1,25 +1,19 @@
-#include <wchar.h>
+#include "libft.h"
 
 char
 	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	const char	*needle_start;
+	size_t	needle_len;
 
-	if (!*needle)
+	needle_len = ft_strlen(needle);
+	if (!needle_len)
 		return ((char *) haystack);
-	needle_start = needle;
-	while (len)
+	while ((len >= needle_len) && *haystack)
 	{
-		if (*haystack != *needle)
-			needle = needle_start;
-		if (*haystack == *needle && !*(needle + 1))
-			return ((char *) haystack - (needle - needle_start));
-		else if (*haystack == *needle)
-			needle++;
-		if (!*haystack)
-			break ;
-		haystack++;
+		if (!ft_memcmp(haystack, needle, needle_len))
+			return ((char *) haystack);
 		len--;
+		haystack++;
 	}
 	return (0);
 }
