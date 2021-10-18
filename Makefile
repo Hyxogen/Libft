@@ -9,18 +9,28 @@ BONUSRC	:= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstla
 DEPEND	:= libft.h
 LIBOBJ	:= $(patsubst %.c,%.o,$(LIBSRC))
 BONUOBJ	:= $(patsubst %.c,%.o,$(BONUSRC))
+TESTSRC := $(wildcard src/tests/*tests.c)
+TESTOBJ := $(patsubst %.c,$(OBJDIR)/%.o,$(notdir TESTSRC)))
 CFLAGS	:= -Wall -Wextra -Werror
 
 all: $(NAME) bonus
 
-bonus: $(NAME) $(BONUOBJ)
-	ar rcs $(NAME) $(BONUOBJ)
+bonus: $(NAME) $(NAME)($(BONUOBJ))
 
 %.o: %.c
 	gcc $(CFLAGS) -c $< -o $@
 
+$(NAME)(%.o): %.o
+	ar rc $(NAME) $<
+
 $(NAME): $(DEPEND) $(LIBSRC) $(LIBOBJ)
 	ar rcs $(NAME) $(LIBOBJ)
+
+test: bonus
+	gcc $(CFLAGS) $(NAME) $(TESTSRC)
+
+ntest:
+	gcc $(LIBSRC) $(TESTSRC)
 
 clean:
 	rm -f $(BONUOBJ)
@@ -31,4 +41,5 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: clean fclean re
+.PHONY: clean fclean re bonus all test
+.PRECIOUS: $(BONUOBJ)
