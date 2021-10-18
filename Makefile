@@ -13,7 +13,7 @@ TESTSRC := $(wildcard src/tests/*tests.c)
 TESTOBJ := $(patsubst %.c,$(OBJDIR)/%.o,$(notdir TESTSRC)))
 CFLAGS	:= -Wall -Wextra -Werror
 
-all: $(NAME) bonus
+all: $(NAME)
 
 bonus: $(NAME) $(NAME)($(BONUOBJ))
 
