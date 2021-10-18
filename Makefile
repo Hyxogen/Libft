@@ -21,7 +21,7 @@ bonus: $(NAME) $(NAME)($(BONUOBJ))
 	gcc $(CFLAGS) -c $< -o $@
 
 $(NAME)(%.o): %.o
-	ar rc $(NAME) $<
+	ar rcs $(NAME) $<
 
 $(NAME): $(DEPEND) $(LIBSRC) $(LIBOBJ)
 	ar rcs $(NAME) $(LIBOBJ)
