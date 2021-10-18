@@ -26,12 +26,6 @@ $(NAME)(%.o): %.o
 $(NAME): $(DEPEND) $(LIBSRC) $(LIBOBJ)
 	ar rcs $(NAME) $(LIBOBJ)
 
-test: bonus
-	gcc $(CFLAGS) $(NAME) $(TESTSRC)
-
-ntest:
-	gcc $(LIBSRC) $(TESTSRC)
-
 clean:
 	rm -f $(BONUOBJ)
 	rm -f $(LIBOBJ)
@@ -41,5 +35,5 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: clean fclean re bonus all test
+.PHONY: clean fclean re bonus all
 .PRECIOUS: $(BONUOBJ)
