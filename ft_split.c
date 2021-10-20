@@ -85,6 +85,7 @@ char
 	if (!fill_array(ret, dup, delim))
 	{
 		clear_array(ret);
+		free(dup);
 		return (0);
 	}
 	free(dup);
