@@ -24,7 +24,7 @@ static void
 			continue ;
 		if (!dup && *token_start)
 		{
-			*out = token_start;
+			*out = ft_strdup(token_start);
 			*(out + 1) = 0;
 			break ;
 		}
@@ -35,7 +35,7 @@ static void
 		}
 		else if (dup - token_start > 1)
 		{
-			*out = token_start;
+			*out = ft_strdup(token_start);
 			out++;
 		}
 	}
@@ -67,5 +67,6 @@ char
 	if (!dup)
 		return (0);
 	fill_array(ret, dup, delim);
+	free(dup);
 	return (ret);
 }
