@@ -80,9 +80,7 @@ char
 		return (0);
 	ft_bzero(ret, sizeof(char *) * size);
 	dup = ft_strdup(str);
-	if (!dup)
-		return (0);
-	if (!fill_array(ret, dup, delim))
+	if (!dup || !fill_array(ret, dup, delim))
 	{
 		clear_array(ret);
 		free(dup);
