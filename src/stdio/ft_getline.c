@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <ft_stdlib.h>
 #include <ft_string.h>
+#include <ft_stdio.h>
+#include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -13,13 +15,6 @@
 #error BUFFER_SIZE must not be less than or equal to 0
 #endif
 #endif
-
-typedef struct s_read_handle {
-	int		m_FD;
-	size_t	m_Size;
-	char	*m_Needle;
-	char	*m_Buffer;
-}	t_read_handle;
 
 t_read_handle	*start_read(int fd)
 {
@@ -55,7 +50,7 @@ static ft_bool push_strn(t_read_handle *handle, const char *str, size_t n)
 		if (!temp)
 			return (FALSE);
 		handle->m_Buffer = temp;
-		handle->m_Needle = handle->m_Buffer = handle->m_Size;
+		handle->m_Needle = handle->m_Buffer + handle->m_Size;
 		handle->m_Size += BUFFER_SIZE;
 	}
 	ft_memcpy(handle->m_Needle, str, n);
@@ -74,7 +69,7 @@ ssize_t ft_getdelim(char **linep, t_read_handle *handle, int delim)
 
 	while (1)
 	{
-		read_size = read(handle->m_FD, &buffer[BUFFER_SIZE], BUFFER_SIZE);
+		read_size = read(handle->m_FD, &buffer[0], BUFFER_SIZE);
 		if (read_size < 0)
 			return (-1);
 		push_strn(handle, &buffer[0], read_size);
@@ -82,12 +77,14 @@ ssize_t ft_getdelim(char **linep, t_read_handle *handle, int delim)
 		if (temp)
 		{
 			handle->m_Needle -= BUFFER_SIZE - read_size;
-			read_size = 0;
+			*linep = ft_strndup(handle->m_Buffer, (handle->m_Needle - handle->m_Buffer) - 1);
+			printf("found str:%s, actual(%zu):%.*s\n", *linep, (handle->m_Needle - handle->m_Buffer - 1), (int) (handle->m_Needle - handle->m_Buffer) - 1, handle->m_Buffer);
+			return (handle->m_Needle - handle->m_Buffer);
 		}
 		if (read_size == 0)
 		{
 			*linep = ft_strndup(handle->m_Buffer, handle->m_Needle - handle->m_Buffer);
-			return (handle->m_Needle - handle->m_Buffer);
+			return (0);
 		}
 	}
 }

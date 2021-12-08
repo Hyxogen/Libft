@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 14:13:36 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 14:18:59 by dmeijer       ########   odam.nl         */
+/*   Updated: 2021/12/08 14:56:06 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char
 	size_t	len;
 	char	*dup;
 
+	len = 0;
 	while (*s1 && n)
 	{
 		len++;

@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 09:58:20 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 12:07:37 by dmeijer       ########   odam.nl         */
+/*   Updated: 2021/12/08 15:02:07 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <ft_stdio.h>
 
 size_t
-	put_nbr_base_signed(int fd, long long number,
+	put_nbr_base_signed(int fd, long number,
 	 const char *baseStr, int base)
 {
 	size_t	ret;
@@ -32,7 +32,7 @@ size_t
 }
 
 size_t
-	put_nbr_base_unsigned(int fd, unsigned long long number,
+	put_nbr_base_unsigned(int fd, unsigned long number,
 	 const char *baseStr, int base)
 {
 	size_t	ret;
