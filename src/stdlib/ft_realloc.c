@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_stdlib.h                                        :+:    :+:            */
+/*   ft_realloc.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/12/08 09:50:34 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 14:07:57 by dmeijer       ########   odam.nl         */
+/*   Created: 2021/12/08 14:03:18 by dmeijer       #+#    #+#                 */
+/*   Updated: 2021/12/08 14:08:02 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STDLIB_H
-# define FT_STDLIB_H
+#include <stdlib.h>
+#include <ft_string.h>
 
-# include <wchar.h>
+void
+	*ft_realloc(void *ptr, size_t oldSize, size_t newSize)
+{
+	unsigned char	*ret;
 
-int		ft_atoi(const char *str);
-void	*ft_realloc(void *ptr, size_t oldSize, size_t newSize);
-#endif
+	ret = malloc(newSize);
+	if (!ret)
+		return (NULL);
+	if (ptr)
+	{
+		ft_memcpy(ret, ptr, oldSize);
+		free(ptr);
+	}
+	return (ret);
+}

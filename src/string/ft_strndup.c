@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_stdlib.h                                        :+:    :+:            */
+/*   ft_strndup.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/12/08 09:50:34 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 14:07:57 by dmeijer       ########   odam.nl         */
+/*   Created: 2021/12/08 14:13:36 by dmeijer       #+#    #+#                 */
+/*   Updated: 2021/12/08 14:18:59 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STDLIB_H
-# define FT_STDLIB_H
+#include <stdlib.h>
+#include <ft_string.h>
 
-# include <wchar.h>
+char
+	*ft_strndup(const char *s1, size_t n)
+{
+	size_t	len;
+	char	*dup;
 
-int		ft_atoi(const char *str);
-void	*ft_realloc(void *ptr, size_t oldSize, size_t newSize);
-#endif
+	while (*s1 && n)
+	{
+		len++;
+		s1++;
+		n--;
+	}
+	dup = malloc(len + 1);
+	if (dup == NULL)
+		return (NULL);
+	ft_memcpy(dup, s1, len);
+	dup[len] = '\0';
+	return (dup);
+}
