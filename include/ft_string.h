@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 09:50:37 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 10:06:46 by dmeijer       ########   odam.nl         */
+/*   Updated: 2021/12/08 10:28:56 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,4 @@ char	*ft_strsep(char **stringp, const char *delim);
 char	*ft_itoa(int num);
 char	*ft_strmapi(char const *str, char (*func)(unsigned int, char));
 void	ft_striteri(char *str, void (*func)(unsigned int, char*));
-
 #endif

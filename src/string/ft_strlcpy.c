@@ -6,12 +6,12 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 10:09:15 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 10:09:22 by dmeijer       ########   odam.nl         */
+/*   Updated: 2021/12/08 12:06:15 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wchar.h>
-#include <ft_string.H>
+#include <ft_string.h>
 
 size_t
 	ft_strlcpy(char *dst, const char *src, size_t dstsize)

@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 09:53:57 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 10:07:39 by dmeijer       ########   odam.nl         */
+/*   Updated: 2021/12/08 12:05:53 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void
 	char		*dest_arr;
 	const char	*src_arr;
 
-	dest_arr = dest + len - 1;
-	src_arr = src + len - 1;
+	dest_arr = ((char *) dest) + len - 1;
+	src_arr = ((const char *)src) + len - 1;
 	while (len)
 	{
 		*dest_arr = *src_arr;
@@ -32,6 +32,9 @@ static void
 	return (dest);
 }
 
+/*
+TODO just use normal memcpy which is faster
+*/
 //Expects that dest and src and len are all not equal to zero
 static void
 	*ft_memcpy_forward(void *dest, const void *src, size_t len)

@@ -1,9 +1,23 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: dmeijer <dmeijer@student.codam.nl>           +#+                      #
+#                                                    +#+                       #
+#    Created: 2021/12/08 10:23:31 by dmeijer       #+#    #+#                  #
+#    Updated: 2021/12/08 10:30:08 by dmeijer       ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
+
 NAME			:= libft.a
 
 SRC_DIR			:= ./src
-OBJ_DIR			:= ./obj
+OUT_DIR			:= ./out
+INT_DIR			:= ./obj
+TRGT_DIR		:= .
 
-INCLUDE_DIRS	:= ./include
+INCLUDE_DIRS	:= -I ./include
 
 SRCS			:= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memset.c \
 				ft_strlen.c	ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcat.c ft_strlcpy.c ft_toupper.c \
@@ -15,11 +29,11 @@ SRCS			:= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_me
 
 VPATH			:= $(SRC_DIR)/ctype $(SRC_DIR)/linked_list $(SRC_DIR)/stdio $(SRC_DIR)/stdlib $(SRC_DIR)/string
 
-OBJS			:= $(SRCS:%.c=%.o)
+OBJS			:= $(addprefix $(INTDIR)/,$(SRCS:%.c=%.o))
 
 CC				:= cc
 
-ALL_CFLAGS		:= -Wall -Wextra -Werror -pedantic -std=c89
+ALL_CFLAGS		:= -Wall -Wextra -Werror -pedantic $(INCLUDE_DIRS)
 
 DEBUG_FLAGS		:= -g3 -Og -fsanitize=address
 DEBUG_DEFINES	:= -DLIBFT_DEBUG
@@ -30,11 +44,16 @@ RELEASE_DEFINES	:= -DLIBFT_RELEASE
 DISTR_FLAGS		:= -Ofast -g0
 DISTR_DEFINES	:= -DPS_DISTRIBUTION
 
+SILENT			:= @
+ifdef VERBOSE
+	SILENT		:=
+endif
+
 .PHONY: clean fclean re bonus all debug release distribution
-.PRECIOUS: $(BONUOBJ)
+.PRECIOUS: $(OBJS)
 
 all: distribution
-
+# Custom target paths voor elke target
 debug: ALL_CFLAGS += $(DEBUG_FLAGS)
 debug: ALL_LINKFLAGS += -fsanitize=address
 debug: DEFINES += $(DEBUG_DEFINES)
@@ -49,22 +68,21 @@ distribution: ALL_CFLAGS += $(DISTR_FLAGS)
 distribution: ALL_CFLAGS += $(DISTR_DEFINES)
 distribution: $(NAME)
 
-%.o: %.c
-	gcc $(CFLAGS) -c $< -o $@
+$(NAME): $(NAME)($(notdir $(OBJS)))
+	$(SILENT)echo Creating $(NAME)
 
-$(NAME)(%.o): %.o
+$(NAME)(%.o): $(INT_DIR)/%.o
 	ar rcs $(NAME) $<
 
-$(NAME): $(DEPEND) $(LIBSRC) $(LIBOBJ)
-	ar rcs $(NAME) $(LIBOBJ)
+$(INT_DIR)/%.o: %.c
+	$(SILENT)mkdir -p $(INT_DIR)
+	$(SILENT)echo $<
+	$(SILENT)$(CC) $(ALL_CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(BONUOBJ)
-	rm -f $(LIBOBJ)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean $(NAME)
-
-

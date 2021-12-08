@@ -6,10 +6,11 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 10:05:04 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 10:05:42 by dmeijer       ########   odam.nl         */
+/*   Updated: 2021/12/08 12:06:35 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <ft_string.h>
 
 static size_t

@@ -6,10 +6,11 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 09:50:17 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 09:50:17 by dmeijer       ########   odam.nl         */
+/*   Updated: 2021/12/08 12:07:57 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "ft_linked_list.h"
 
 t_list
