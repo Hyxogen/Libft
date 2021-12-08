@@ -6,7 +6,7 @@
 #    By: dmeijer <dmeijer@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/12/08 10:23:31 by dmeijer       #+#    #+#                  #
-#    Updated: 2021/12/08 10:30:08 by dmeijer       ########   odam.nl          #
+#    Updated: 2021/12/08 12:45:17 by dmeijer       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS			:= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_me
 
 VPATH			:= $(SRC_DIR)/ctype $(SRC_DIR)/linked_list $(SRC_DIR)/stdio $(SRC_DIR)/stdlib $(SRC_DIR)/string
 
-OBJS			:= $(addprefix $(INTDIR)/,$(SRCS:%.c=%.o))
+OBJS			:= $(addprefix $(INT_DIR)/,$(SRCS:%.c=%.o))
 
 CC				:= cc
 
@@ -55,12 +55,10 @@ endif
 all: distribution
 # Custom target paths voor elke target
 debug: ALL_CFLAGS += $(DEBUG_FLAGS)
-debug: ALL_LINKFLAGS += -fsanitize=address
 debug: DEFINES += $(DEBUG_DEFINES)
 debug: $(NAME)
 
 release: ALL_CFLAGS += $(RELEASE_FLAGS)
-release: ALL_LINKFLAGS += -fsanitize=addresss
 release: DEFINES += $(RELEASE_DEFINES)
 release: $(NAME)
 
@@ -72,17 +70,19 @@ $(NAME): $(NAME)($(notdir $(OBJS)))
 	$(SILENT)echo Creating $(NAME)
 
 $(NAME)(%.o): $(INT_DIR)/%.o
-	ar rcs $(NAME) $<
+	$(SILENT)ar rcs $(NAME) $<
 
 $(INT_DIR)/%.o: %.c
 	$(SILENT)mkdir -p $(INT_DIR)
-	$(SILENT)echo $<
+	$(SILENT)echo $(notdir $<)
 	$(SILENT)$(CC) $(ALL_CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	$(SILENT)echo Cleaning object files of $(NAME)
+	$(SILENT)rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(SILENT)echo Cleaning $(NAME)
+	$(SILENT)rm -f $(NAME)
 
 re: fclean $(NAME)
