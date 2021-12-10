@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 09:57:21 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 15:00:17 by dmeijer       ########   odam.nl         */
+/*   Updated: 2021/12/10 08:47:39 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 typedef struct s_read_handle {
 	int		m_FD;
 	size_t	m_Size;
-	char	*m_Needle;
+	size_t	m_StartOffset;
+	size_t	m_EndOffset;
 	char	*m_Buffer;
 }	t_read_handle;
+
 /*TODO change long long to int64*/
 size_t			ft_putchar_fd(int fd, char c);
 size_t			ft_putstr_fd(int fd, const char *str);

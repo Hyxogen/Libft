@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
 
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 1024
@@ -31,7 +32,8 @@ t_read_handle	*start_read(int fd)
 		free(ret);
 		return (NULL);
 	}
-	ret->m_Needle = ret->m_Buffer;
+	ret->m_StartOffset = 0;
+	ret->m_EndOffset = 0;
 	return (ret);
 }
 
@@ -44,17 +46,15 @@ static ft_bool push_strn(t_read_handle *handle, const char *str, size_t n)
 {
 	void	*temp;
 
-	if ((handle->m_Needle + n) >= (handle->m_Buffer + handle->m_Size))
+	if ((handle->m_StartOffset + n) >= handle->m_Size)
 	{
 		temp = ft_realloc(handle->m_Buffer, handle->m_Size, handle->m_Size + BUFFER_SIZE);
-		if (!temp)
+		if (temp == NULL)
 			return (FALSE);
-		handle->m_Buffer = temp;
-		handle->m_Needle = handle->m_Buffer + handle->m_Size;
 		handle->m_Size += BUFFER_SIZE;
 	}
-	ft_memcpy(handle->m_Needle, str, n);
-	handle->m_Needle += n;
+	ft_memcpy(&handle->m_Buffer[handle->m_EndOffset], str, n);
+	handle->m_EndOffset += n;
 	return (TRUE);
 }
 
@@ -73,17 +73,19 @@ ssize_t ft_getdelim(char **linep, t_read_handle *handle, int delim)
 		if (read_size < 0)
 			return (-1);
 		push_strn(handle, &buffer[0], read_size);
-		temp = ft_memchr(&buffer[0], (char)delim, read_size);
+		temp = ft_memchr(&handle->m_Buffer[handle->m_EndOffset - read_size], (char) delim, read_size);
 		if (temp)
 		{
-			handle->m_Needle -= BUFFER_SIZE - read_size;
-			*linep = ft_strndup(handle->m_Buffer, (handle->m_Needle - handle->m_Buffer) - 1);
-			printf("found str:%s, actual(%zu):%.*s\n", *linep, (handle->m_Needle - handle->m_Buffer - 1), (int) (handle->m_Needle - handle->m_Buffer) - 1, handle->m_Buffer);
-			return (handle->m_Needle - handle->m_Buffer);
+			// printf("%.*s\n", (int)read_size, &handle->m_Buffer[handle->m_StartOffset]);
+			temp = ft_strndup(&handle->m_Buffer[handle->m_StartOffset], temp - &handle->m_Buffer[handle->m_StartOffset]);
+			*linep = temp;
+			handle->m_StartOffset = handle->m_EndOffset;
+			return (read_size);
 		}
-		if (read_size == 0)
+		else if (read_size == 0)
 		{
-			*linep = ft_strndup(handle->m_Buffer, handle->m_Needle - handle->m_Buffer);
+			temp = ft_strndup(&handle->m_Buffer[handle->m_StartOffset], temp - &handle->m_Buffer[handle->m_StartOffset]);
+			*linep = temp;
 			return (0);
 		}
 	}
