@@ -76,7 +76,6 @@ ssize_t ft_getdelim(char **linep, t_read_handle *handle, int delim)
 		temp = ft_memchr(&handle->m_Buffer[handle->m_EndOffset - read_size], (char) delim, read_size);
 		if (temp)
 		{
-			// printf("%.*s\n", (int)read_size, &handle->m_Buffer[handle->m_StartOffset]);
 			temp = ft_strndup(&handle->m_Buffer[handle->m_StartOffset], temp - &handle->m_Buffer[handle->m_StartOffset]);
 			*linep = temp;
 			handle->m_StartOffset = handle->m_EndOffset;
