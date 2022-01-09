@@ -39,6 +39,8 @@ t_read_handle	*start_read(int fd)
 
 void close_read_handle(t_read_handle *handle)
 {
+	if (handle)
+		free(handle->m_Buffer);
 	free(handle);
 }
 
@@ -52,6 +54,7 @@ static ft_bool push_strn(t_read_handle *handle, const char *str, size_t n)
 		if (temp == NULL)
 			return (FALSE);
 		handle->m_Size += BUFFER_SIZE;
+		handle->m_Buffer = temp;
 	}
 	ft_memcpy(&handle->m_Buffer[handle->m_EndOffset], str, n);
 	handle->m_EndOffset += n;
@@ -60,6 +63,7 @@ static ft_bool push_strn(t_read_handle *handle, const char *str, size_t n)
 
 /*
 It wil override linep
+Norminize by shortening names like handle and startoffset and endoffset
 */
 ssize_t ft_getdelim(char **linep, t_read_handle *handle, int delim)
 {
@@ -69,21 +73,20 @@ ssize_t ft_getdelim(char **linep, t_read_handle *handle, int delim)
 
 	while (1)
 	{
+		temp = ft_memchr(&handle->m_Buffer[handle->m_StartOffset], (char) delim, handle->m_EndOffset - handle->m_StartOffset);
+		if (temp)
+		{
+			*linep = ft_strndup(&handle->m_Buffer[handle->m_StartOffset], temp - &handle->m_Buffer[handle->m_StartOffset]);
+			handle->m_StartOffset += (temp - &handle->m_Buffer[handle->m_StartOffset]) + 1;
+			return (read_size);
+		}
 		read_size = read(handle->m_FD, &buffer[0], BUFFER_SIZE);
 		if (read_size < 0)
 			return (-1);
 		push_strn(handle, &buffer[0], read_size);
-		temp = ft_memchr(&handle->m_Buffer[handle->m_EndOffset - read_size], (char) delim, read_size);
-		if (temp)
+		if (read_size == 0)
 		{
-			temp = ft_strndup(&handle->m_Buffer[handle->m_StartOffset], temp - &handle->m_Buffer[handle->m_StartOffset]);
-			*linep = temp;
-			handle->m_StartOffset = handle->m_EndOffset;
-			return (read_size);
-		}
-		else if (read_size == 0)
-		{
-			temp = ft_strndup(&handle->m_Buffer[handle->m_StartOffset], temp - &handle->m_Buffer[handle->m_StartOffset]);
+			temp = ft_strndup(&handle->m_Buffer[handle->m_StartOffset], handle->m_EndOffset - handle->m_StartOffset);
 			*linep = temp;
 			return (0);
 		}

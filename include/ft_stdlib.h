@@ -17,4 +17,5 @@
 
 int		ft_atoi(const char *str);
 void	*ft_realloc(void *ptr, size_t oldSize, size_t newSize);
+long	ft_labs(long val);
 #endif

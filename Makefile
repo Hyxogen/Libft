@@ -26,9 +26,10 @@ SRCS			:= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_me
 				ft_split.c ft_strsep.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 				ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 				ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-				ft_realloc.c ft_getline.c ft_strndup.c ft_strcmp.c
+				ft_realloc.c ft_getline.c ft_strndup.c ft_strcmp.c ft_abs.c ft_min.c ft_max.c
 
-VPATH			:= $(SRC_DIR)/ctype $(SRC_DIR)/linked_list $(SRC_DIR)/stdio $(SRC_DIR)/stdlib $(SRC_DIR)/string
+VPATH			:= $(SRC_DIR)/ctype $(SRC_DIR)/linked_list $(SRC_DIR)/stdio $(SRC_DIR)/stdlib $(SRC_DIR)/string \
+					$(SRC_DIR)/math
 
 OBJS			:= $(addprefix $(INT_DIR)/,$(SRCS:%.c=%.o))
 

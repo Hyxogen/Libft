@@ -32,6 +32,7 @@ static const char
 	const char	*end;
 	const char	*begin;
 
+	end = str;
 	while (*str && is_in(*str, charset))
 		str++;
 	if (!*str)
