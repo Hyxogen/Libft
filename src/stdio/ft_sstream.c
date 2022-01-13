@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <ft_string.h>
 #include <ft_stdlib.h>
-#include <ft_stdbool.h>
 
 ft_bool _stream_grow(t_sstream *stream, size_t new_size)
 {
