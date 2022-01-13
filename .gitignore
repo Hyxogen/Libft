@@ -27,4 +27,6 @@
 obj/
 *.out
 *.txt
+compile_commands.json
+.cache/
 *.a
