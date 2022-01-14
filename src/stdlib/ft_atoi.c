@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_ctype.h"
+#include "ft_stdlib.h"
 
 int
 	ft_atoi(const char *str)
@@ -36,3 +37,29 @@ int
 	}
 	return (ret * sign);
 }
+
+ft_bool
+	ft_checked_atoi(const char *str, int* out)
+{
+	int	sign;
+
+	sign = 1;
+	*out = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-')
+	{
+		sign = -1;
+		str++;
+	}
+	else if (*str == '+')
+		str++;
+	while (ft_isdigit(*str))
+	{
+		*out = *out * 10 + (*str - '0');
+		str++;
+	}
+	*out *= sign;
+	return (*str == '\0');
+}
+

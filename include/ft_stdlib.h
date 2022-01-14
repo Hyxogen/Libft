@@ -14,7 +14,9 @@
 # define FT_STDLIB_H
 
 # include <wchar.h>
+# include "ft_stdbool.h"
 
+ft_bool		ft_checked_atoi(const char *str, int* out);
 int		ft_atoi(const char *str);
 void	*ft_realloc(void *ptr, size_t oldSize, size_t newSize);
 long	ft_labs(long val);
