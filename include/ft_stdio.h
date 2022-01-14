@@ -16,11 +16,11 @@
 # include <wchar.h>
 
 typedef struct s_read_handle {
-	int		m_FD;
-	size_t	m_Size;
-	size_t	m_StartOffset;
-	size_t	m_EndOffset;
-	char	*m_Buffer;
+	int		m_fd;
+	size_t	m_size;
+	size_t	m_start;
+	size_t	m_end;
+	char	*m_buf;
 }	t_read_handle;
 
 /*TODO change long long to int64*/

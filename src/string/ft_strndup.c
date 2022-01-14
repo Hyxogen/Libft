@@ -20,7 +20,7 @@ char
 	size_t		len;
 	char		*dup;
 	const char	*cpy;
-	
+
 	len = 0;
 	cpy = s1;
 	while (*cpy && n)

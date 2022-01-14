@@ -15,7 +15,7 @@
 
 size_t
 	put_nbr_base_signed(int fd, long number,
-	 const char *baseStr, int base)
+	const char *baseStr, int base)
 {
 	size_t	ret;
 
@@ -33,7 +33,7 @@ size_t
 
 size_t
 	put_nbr_base_unsigned(int fd, unsigned long number,
-	 const char *baseStr, int base)
+	const char *baseStr, int base)
 {
 	size_t	ret;
 

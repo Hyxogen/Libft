@@ -10,84 +10,88 @@
 #include <string.h>
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 1024
-#else
-#if (BUFFER_SIZE <= 0)
-#error BUFFER_SIZE must not be less than or equal to 0
-#endif
+# define BUFFER_SIZE 1024
+#elif (BUFFER_SIZE <= 0)
+# error BUFFER_SIZE must not be less than or equal to 0
 #endif
 
-t_read_handle	*start_read(int fd)
+t_read_handle
+	*start_read(int fd)
 {
 	t_read_handle	*ret;
 
 	ret = malloc(sizeof(t_read_handle));
 	if (ret == NULL)
 		return (NULL);
-	ret->m_FD = fd;
-	ret->m_Size = BUFFER_SIZE;
-	ret->m_Buffer = malloc(sizeof(char) * BUFFER_SIZE);
-	if (ret->m_Buffer == NULL)
+	ret->m_fd = fd;
+	ret->m_size = BUFFER_SIZE;
+	ret->m_buf = malloc(sizeof(char) * BUFFER_SIZE);
+	if (ret->m_buf == NULL)
 	{
 		free(ret);
 		return (NULL);
 	}
-	ret->m_StartOffset = 0;
-	ret->m_EndOffset = 0;
+	ret->m_start = 0;
+	ret->m_end = 0;
 	return (ret);
 }
 
-void close_read_handle(t_read_handle *handle)
+void
+	close_read_handle(t_read_handle *rh)
 {
-	if (handle)
-		free(handle->m_Buffer);
-	free(handle);
+	if (rh)
+		free(rh->m_buf);
+	free(rh);
 }
 
-static ft_bool push_strn(t_read_handle *handle, const char *str, size_t n)
+static ft_bool
+	push_strn(t_read_handle *rh, const char *str, size_t n)
 {
-	void	*temp;
+	void	*tmp;
 
-	if ((handle->m_StartOffset + n) >= handle->m_Size)
+	if ((rh->m_start + n) >= rh->m_size)
 	{
-		temp = ft_realloc(handle->m_Buffer, handle->m_Size, handle->m_Size + BUFFER_SIZE);
-		if (temp == NULL)
+		tmp = ft_realloc(rh->m_buf, rh->m_size, rh->m_size + BUFFER_SIZE);
+		if (tmp == NULL)
 			return (FALSE);
-		handle->m_Size += BUFFER_SIZE;
-		handle->m_Buffer = temp;
+		rh->m_size += BUFFER_SIZE;
+		rh->m_buf = tmp;
 	}
-	ft_memcpy(&handle->m_Buffer[handle->m_EndOffset], str, n);
-	handle->m_EndOffset += n;
+	ft_memcpy(&rh->m_buf[rh->m_end], str, n);
+	rh->m_end += n;
 	return (TRUE);
 }
 
 /*
-It wil override linep
-Norminize by shortening names like handle and startoffset and endoffset
+It wil override lp
+Norminize by shortening names like rh and startoffset and endoffset
+Can it go wrong ith read_size when if (tmp) evaluates to true?
 */
-ssize_t ft_getdelim(char **linep, t_read_handle *handle, int delim)
+ssize_t
+	ft_getdelim(char **lp, t_read_handle *rh, int dl)
 {
 	char	buffer[BUFFER_SIZE];
 	ssize_t	read_size;
-	char	*temp;
+	char	*tmp;
 
 	while (1)
 	{
-		temp = ft_memchr(&handle->m_Buffer[handle->m_StartOffset], (char) delim, handle->m_EndOffset - handle->m_StartOffset);
-		if (temp)
+		tmp = ft_memchr(&rh->m_buf[rh->m_start], dl, rh->m_end - rh->m_start);
+		if (tmp)
 		{
-			*linep = ft_strndup(&handle->m_Buffer[handle->m_StartOffset], temp - &handle->m_Buffer[handle->m_StartOffset]);
-			handle->m_StartOffset += (temp - &handle->m_Buffer[handle->m_StartOffset]) + 1;
+			read_size = tmp - &rh->m_buf[rh->m_start];
+			*lp = ft_strndup(&rh->m_buf[rh->m_start], read_size);
+			rh->m_start += (tmp - &rh->m_buf[rh->m_start]) + 1;
 			return (read_size);
 		}
-		read_size = read(handle->m_FD, &buffer[0], BUFFER_SIZE);
+		read_size = read(rh->m_fd, &buffer[0], BUFFER_SIZE);
 		if (read_size < 0)
 			return (-1);
-		push_strn(handle, &buffer[0], read_size);
+		push_strn(rh, &buffer[0], read_size);
 		if (read_size == 0)
 		{
-			temp = ft_strndup(&handle->m_Buffer[handle->m_StartOffset], handle->m_EndOffset - handle->m_StartOffset);
-			*linep = temp;
+			tmp = ft_strndup(&rh->m_buf[rh->m_start], rh->m_end - rh->m_start);
+			*lp = tmp;
 			return (0);
 		}
 	}
