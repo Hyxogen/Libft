@@ -39,7 +39,7 @@ int
 }
 
 ft_bool
-	ft_checked_atoi(const char *str, int* out)
+	ft_checked_atoi(const char *str, int *out)
 {
 	int	sign;
 
@@ -62,4 +62,3 @@ ft_bool
 	*out *= sign;
 	return (*str == '\0');
 }
-
