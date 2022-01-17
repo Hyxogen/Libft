@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 09:50:59 by dmeijer       #+#    #+#                 */
-/*   Updated: 2022/01/17 15:46:50 by dmeijer       ########   odam.nl         */
+/*   Updated: 2022/01/17 16:13:36 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,5 @@ t_bool
 	if (!_ft_checked_atoi(str, out))
 		return (FALSE);
 	*out *= sign;
-	return ((sign == -1 && *out <= 0) || (sign == 1 && *out >= 1));
+	return ((sign == -1 && *out <= 0) || (sign == 1 && *out >= 0));
 }
