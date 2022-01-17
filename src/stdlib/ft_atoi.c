@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 09:50:59 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 09:51:06 by dmeijer       ########   odam.nl         */
+/*   Updated: 2022/01/17 08:28:51 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int
 	return (ret * sign);
 }
 
-ft_bool
+t_bool
 	ft_checked_atoi(const char *str, int *out)
 {
 	int	sign;

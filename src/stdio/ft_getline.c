@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/17 08:23:56 by dmeijer       #+#    #+#                 */
-/*   Updated: 2022/01/17 08:23:56 by dmeijer       ########   odam.nl         */
+/*   Updated: 2022/01/17 08:28:51 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void
 	free(rh);
 }
 
-static ft_bool
+static t_bool
 	push_strn(t_read_handle *rh, const char *str, size_t n)
 {
 	void	*tmp;

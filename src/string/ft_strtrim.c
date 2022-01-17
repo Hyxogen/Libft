@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/08 10:10:21 by dmeijer       #+#    #+#                 */
-/*   Updated: 2021/12/08 10:13:53 by dmeijer       ########   odam.nl         */
+/*   Updated: 2022/01/17 08:28:51 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <ft_string.h>
 #include <ft_stdbool.h>
 
-static ft_bool
+static t_bool
 	is_in(char c, const char *charset)
 {
 	while (*charset)

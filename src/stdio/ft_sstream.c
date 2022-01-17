@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/17 08:24:44 by dmeijer       #+#    #+#                 */
-/*   Updated: 2022/01/17 08:24:44 by dmeijer       ########   odam.nl         */
+/*   Updated: 2022/01/17 08:28:51 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <ft_string.h>
 #include <ft_stdlib.h>
 
-ft_bool
+t_bool
 	_stream_grow(t_sstream *stream, size_t new_size)
 {
 	stream->m_ptr_begin = ft_realloc(stream->m_ptr_begin,
@@ -26,7 +26,7 @@ ft_bool
 	return (stream->m_ptr_begin == 0);
 }
 
-ft_bool
+t_bool
 	stream_flush(t_sstream *stream, int fd)
 {
 	int	ret;
@@ -36,7 +36,7 @@ ft_bool
 	return (ret >= 0);
 }
 
-ft_bool
+t_bool
 	stream_write(t_sstream *stream, const char *str, size_t len)
 {
 	if (len + stream->m_write_offset >= stream->m_buffersize)
@@ -49,7 +49,7 @@ ft_bool
 	return (1);
 }
 
-ft_bool
+t_bool
 	stream_init(t_sstream *stream, size_t buffersize)
 {
 	stream->m_ptr_begin = malloc(buffersize);

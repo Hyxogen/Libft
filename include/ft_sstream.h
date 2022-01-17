@@ -6,7 +6,7 @@
 /*   By: dmeijer <dmeijer@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/17 08:25:46 by dmeijer       #+#    #+#                 */
-/*   Updated: 2022/01/17 08:28:12 by dmeijer       ########   odam.nl         */
+/*   Updated: 2022/01/17 08:28:51 by dmeijer       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_sstream {
 	size_t	m_buffersize;
 }	t_sstream;
 
-ft_bool	stream_flush(t_sstream *stream, int fd);
-ft_bool	stream_write(t_sstream *stream, const char *str, size_t len);
-ft_bool	stream_init(t_sstream *stream, size_t buffersize);
+t_bool	stream_flush(t_sstream *stream, int fd);
+t_bool	stream_write(t_sstream *stream, const char *str, size_t len);
+t_bool	stream_init(t_sstream *stream, size_t buffersize);
 
 #endif
