@@ -21,4 +21,5 @@ int			ft_atoi(const char *str);
 void		*ft_realloc(void *ptr, size_t oldSize, size_t newSize);
 long		ft_labs(long val);
 int			ft_abs(int val);
+float		ft_fabs(float val);
 #endif

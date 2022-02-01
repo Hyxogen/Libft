@@ -18,6 +18,14 @@ int
 	return (val);
 }
 
+float
+	ft_fabs(float val)
+{
+	if (val < 0)
+		return (-val);
+	return (val);
+}
+
 long
 	ft_labs(long val)
 {
